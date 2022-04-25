@@ -37,7 +37,7 @@ In addition to PyTorch Lightning, requirements.txt will also install:
 - [MyPy](https://github.com/python/mypy/tree/38f1e30e8137ccc1aad6a4f113eb4360c6206539) (static type checker)
 - [easy-sphinx](https://github.com/JustinGoheenOrg/easy-sphinx) (Sphinx-autodoc + [material for mkdocs](https://squidfunk.github.io/mkdocs-material/))
 
-Security minded engineers can opt for [deepsource](https://deepsource.io/), [pyre/pysa](https://pyre-check.org/), or [Bandit](https://github.com/PyCQA/bandit). This template uses deepsource.
+Security minded engineers can opt for [deepsource](https://deepsource.io/), [pyre/pysa](https://pyre-check.org/), or [Bandit](https://github.com/PyCQA/bandit). This template uses deepsource (account required).
 
 > remove the `.deepsource.toml` file if using pyre/pysa or bandit
 
@@ -62,3 +62,15 @@ pip freeze > requirements.txt
 VS Code users can learn more about PyTorch development and Tensorboard in VS Code here -> https://code.visualstudio.com/docs/datascience/pytorch-support.
 
 Grid.ai support Tensorboard in the [Runs web interface](https://docs.grid.ai/features/runs/Analyzing%20Runs/metric-charts#tensorboard).
+
+## Why PyTorch Lightning
+
+PyTorch Lightning is an easy to use, cloud-training ready framework equipped with robust utilities that allows researchers to focus on research, and not engineering.
+
+Instructors will benefit from using PyTorch Lightning in courses because it enables students to focus on the conceptual purpose of algorithms as opposed to facing teaching and learning barriers associated with troubleshooting code or building utilities from scratch. 
+
+PyTorch Lightning is well [documented](https://pytorch-lightning.readthedocs.io/en/latest/), and comes packed with basic, intermediate, advanced, and expert [guides](https://pytorch-lightning.readthedocs.io/en/latest/levels/core_skills.html) and [examples](https://pytorch-lightning.readthedocs.io/en/latest/notebooks/course_UvA-DL/01-introduction-to-pytorch.html).
+
+PyTorch Lightning is has a large user community of helpful users who are active in [Slack](https://join.slack.com/t/pytorch-lightning/shared_invite/zt-12iz3cds1-uyyyBYJLiaL2bqVmMN7n~A) and GitHub [Discussions](https://github.com/PyTorchLightning/pytorch-lightning/discussions).
+
+PyTorch Lightning models are ready for distributed training with [Grid.ai](https://www.grid.ai/). Scaling to multi-GPU or TPU training environments can be as easy as logging into Grid's web interface, connecting a GitHub repo, selecting a machine type [CPU, GPU, TPU] from a cost-transparent list, and connecting to a datastore. Datastores is Grid's storage component, that allows researchers to store up to 50 datastore for free.
