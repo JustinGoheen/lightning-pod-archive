@@ -3,6 +3,7 @@ lightning-transformers
 lightning-grid
 datasets
 plotly
+sympy
 black
 mypy
 ipywidgets
