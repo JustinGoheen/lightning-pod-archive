@@ -5,4 +5,5 @@ datasets
 plotly
 black
 mypy
+ipywidgets
 git+https://github.com/JustinGoheenOrg/easy-sphinx.git
