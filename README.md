@@ -10,7 +10,7 @@ A template repo for [PyTorch Lightning](https://www.pytorchlightning.ai/) in [Gi
 
 ## The basics
 
-This template can aid in creating and sharing reproducible projects structured according to potential best practices for Research Engineers.
+This template can aid in creating and sharing reproducible projects structured according to potential best practices for researchers.
 
 The intent is that you clone the repo each time you need to begin a fresh project. The repo can be cloned from within VS Code, PyCharm, GitKraken, or in terminal with:
 
