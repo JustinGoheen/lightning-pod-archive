@@ -1,0 +1,8 @@
+pytorch-lightning
+lightning-transformers
+lightning-grid
+datasets
+plotly
+black
+mypy
+git+https://github.com/JustinGoheenOrg/easy-sphinx.git

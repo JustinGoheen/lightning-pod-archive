@@ -1,0 +1,6 @@
+site_name: Site Name
+theme:
+  name: material
+docs_dir: docs/sources
+repo_url: ""
+site_description: "awesome description"
