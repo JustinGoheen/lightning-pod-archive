@@ -73,4 +73,4 @@ PyTorch Lightning is well [documented](https://pytorch-lightning.readthedocs.io/
 
 PyTorch Lightning is has a large user community of helpful users who are active in [Slack](https://join.slack.com/t/pytorch-lightning/shared_invite/zt-12iz3cds1-uyyyBYJLiaL2bqVmMN7n~A) and GitHub [Discussions](https://github.com/PyTorchLightning/pytorch-lightning/discussions).
 
-PyTorch Lightning models are ready for distributed training with [Grid.ai](https://www.grid.ai/). Scaling to multi-GPU or TPU training environments can be as easy as logging into Grid's web interface, connecting a GitHub repo, selecting a machine type [CPU, GPU, TPU] from a cost-transparent list, and connecting to a datastore. Datastores is Grid's storage component, that allows researchers to store up to 50 datastore for free.
+PyTorch Lightning models are ready for distributed training with [Grid.ai](https://www.grid.ai/). Scaling to multi-GPU or TPU training environments can be as easy as logging into Grid's web interface, connecting a GitHub repo, selecting a machine type [CPU, GPU, TPU] from a cost-transparent list, and connecting to a [datastore](https://docs.grid.ai/features/datastores).
