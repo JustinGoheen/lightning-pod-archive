@@ -1,8 +1,11 @@
 pytorch-lightning
 lightning-transformers
 lightning-grid
+lightning-bolts
+lightning-flash
 torchvision
 torchaudio
+torchtext
 datasets
 plotly
 sympy
