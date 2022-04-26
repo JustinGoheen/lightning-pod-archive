@@ -30,6 +30,8 @@ Installing pytorch-lightning also installs:
 In addition to PyTorch Lightning, requirements.txt will also install: 
 - [lightning-transformers](https://lightning-transformers.readthedocs.io/en/latest/)
 - [Grid.ai](https://www.grid.ai/)
+- [torchvision](https://pytorch.org/vision/stable/index.html)
+- [torchaudio](https://pytorch.org/audio/stable/index.html)
 - Hugging Face's [datasets](https://huggingface.co/docs/datasets/index)
 - [SymPy](https://www.sympy.org/en/index.html) (symbolic mathematics)
 - [Plotly](https://plotly.com/python/) (data visualization)
