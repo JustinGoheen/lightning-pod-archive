@@ -45,6 +45,8 @@ Security minded engineers can opt for [deepsource](https://deepsource.io/), [pyr
 
 The Gitpod config file installs the Jupyter extension for individuals who also prefer notebook environments.
 
+Refer to the [wiki](https://github.com/JustinGoheen/lightning-pod/wiki) for guides on Grid, datasets, Plotly, formatting and style, and source code documentation.
+
 ## Suggested use
 
 This template is mostly for distributed teams who can benefit from a tool like Gitpod. Individuals who wish to share open source work can use this template as a guideline for creating reproducible projects. Use of Gitpod is not required for individuals who do not fit into one of those two categories; these individuals can still benefit from forking the repo as a template and simply removing the `.gitpod.yml` file from the project directory. 
