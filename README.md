@@ -8,6 +8,8 @@ A template repo for [PyTorch Lightning](https://www.pytorchlightning.ai/) in [Gi
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/JustinGoheen/lightning-pod)
 
+Refer to the [wiki](https://github.com/JustinGoheen/lightning-pod/wiki) for additional guides.
+
 ## The basics
 
 This template can aid in creating and sharing reproducible projects structured according to potential best practices for researchers.
@@ -43,9 +45,16 @@ Security minded engineers can opt for [deepsource](https://deepsource.io/), [pyr
 
 > remove the `.deepsource.toml` file if using pyre/pysa or bandit
 
-The Gitpod config file installs the Jupyter extension for individuals who also prefer notebook environments.
+### M1 powered Macs
 
-Refer to the [wiki](https://github.com/JustinGoheen/lightning-pod/wiki) for guides on Grid, datasets, Plotly, formatting and style, and source code documentation.
+Individuals using conda and miniforge on M1 powered macs can replicate the environment locally with:
+
+```sh
+cd {{ path_to_clone }}
+conda env create --file environment.yml
+```
+
+Using the above will create a new conda env titled `lightning-base`.
 
 ## Suggested use
 

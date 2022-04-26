@@ -1,0 +1,26 @@
+name: lightning-base
+channels:
+  - conda-forge
+dependencies:
+  - python=3.9.12
+  - sentencepiece
+  - tokenizers
+  - pip:
+      - black
+      - datasets
+      - easy-sphinx
+      - ipywidgets
+      - lightning-bolts
+      - lightning-flash
+      - lightning-grid
+      - lightning-transformers
+      - matplotlib
+      - plotly
+      - pytorch-lightning
+      - tensorboard
+      - torchaudio
+      - torchmetrics
+      - torchtext
+      - torchvision
+      - git+https://github.com/JustinGoheenOrg/easy-sphinx.git
+prefix: /opt/homebrew/Caskroom/miniforge/base/envs/lightning
