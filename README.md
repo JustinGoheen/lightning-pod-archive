@@ -59,15 +59,15 @@ pip freeze > requirements.txt
 
 ## TensorBoard
 
-VS Code users can learn more about PyTorch development and Tensorboard in VS Code here -> https://code.visualstudio.com/docs/datascience/pytorch-support.
+VS Code users can learn more about PyTorch development and TensorBoard in VS Code here -> https://code.visualstudio.com/docs/datascience/pytorch-support.
 
-Grid.ai support Tensorboard in the [Runs web interface](https://docs.grid.ai/features/runs/Analyzing%20Runs/metric-charts#tensorboard).
+Grid.ai support TensorBoard in the [Runs](https://docs.grid.ai/features/runs/Analyzing%20Runs/metric-charts#tensorboard) web interface.
 
 ## Why PyTorch Lightning
 
 PyTorch Lightning is an easy to use, cloud-training ready framework equipped with robust utilities that allows researchers to focus on research, and not engineering.
 
-Instructors will benefit from using PyTorch Lightning in courses because it enables students to focus on the conceptual purpose of algorithms as opposed to facing teaching and learning barriers associated with troubleshooting code or building utilities from scratch. 
+Instructors will benefit from using PyTorch Lightning in courses because it enables students to focus on the conceptual purpose of algorithms as opposed to facing teaching and learning barriers associated with from-scratch utilities code. 
 
 PyTorch Lightning is well [documented](https://pytorch-lightning.readthedocs.io/en/latest/), and comes packed with basic, intermediate, advanced, and expert [guides](https://pytorch-lightning.readthedocs.io/en/latest/levels/core_skills.html) and [examples](https://pytorch-lightning.readthedocs.io/en/latest/notebooks/course_UvA-DL/01-introduction-to-pytorch.html).
 
