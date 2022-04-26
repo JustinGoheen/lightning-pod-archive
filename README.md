@@ -47,7 +47,7 @@ The Gitpod config file installs the Jupyter extension for individuals who also p
 
 This template is mostly for distributed teams who can benefit from a tool like Gitpod. Individuals who wish to share open source work can use this template as a guideline for creating reproducible projects. Use of Gitpod is not required for individuals who do not fit into one of those two categories; these individuals will still benefit from forking the repo as a template and simply removing the `.gitpod.yml` file from the project directory. 
 
-It is not recommended to start a Grid Session from within a Gitpod Workspace; doing so may accrue compute hours in both platforms.
+> It is not recommended to start a Grid Session from within a Gitpod Workspace; doing so may accrue compute hours in both platforms.
 
 The best practice would be to: develop in Gitpod using a development-sized (toy) dataset (i.e. fast_dev_run in PyTorch Lightning) and then start the Grid Session locally from your machine (i.e. all updates have been pushed to GitHub and the Gitpod Workspace has been shutdown).
 
