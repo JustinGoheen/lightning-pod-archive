@@ -11,8 +11,10 @@ from .model import LitModel
 
 if __name__ == "__main__":
 
-    train_loader = DataLoader(MNIST(os.getcwd(), download=True, transform=transforms.ToTensor()))
+    train_loader = DataLoader(
+        MNIST(os.getcwd(), download=True, transform=transforms.ToTensor())
+    )
     trainer = pl.Trainer(max_epochs=1, fast_dev_run=True)
     model = LitModel()
 
-    trainer.fit(model, train_dataloaders=train_loader, )
+    trainer.fit(model, train_dataloaders=train_loader)
