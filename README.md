@@ -59,7 +59,7 @@ pip freeze > requirements.txt
 
 ## TensorBoard
 
-VS Code users can learn more about PyTorch development and TensorBoard in VS Code here -> https://code.visualstudio.com/docs/datascience/pytorch-support.
+VS Code users can learn more about PyTorch development and TensorBoard on the [official](https://code.visualstudio.com/docs/datascience/pytorch-support) VS Code site.
 
 Grid.ai support TensorBoard in the [Runs](https://docs.grid.ai/features/runs/Analyzing%20Runs/metric-charts#tensorboard) web interface.
 
