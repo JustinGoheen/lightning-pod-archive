@@ -3,12 +3,12 @@ channels:
   - conda-forge
 dependencies:
   - python=3.9.12
+  - pip
   - sentencepiece
   - tokenizers
   - pip:
       - black
       - datasets
-      - easy-sphinx
       - ipywidgets
       - lightning-bolts
       - lightning-flash
