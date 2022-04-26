@@ -12,7 +12,7 @@ A template repo for [PyTorch Lightning](https://www.pytorchlightning.ai/) in [Gi
 
 This template can aid in creating and sharing reproducible projects structured according to potential best practices for researchers.
 
-The intent is that you clone the repo each time you need to begin a fresh project. The repo can be cloned from within VS Code, PyCharm, GitKraken, or in terminal with:
+The intent is that you fork the repo, keep your fork up to date with [fetch upstream](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork), and clone the repo each time you need to begin a fresh project. The repo can be cloned from within [VS Code](https://code.visualstudio.com/docs/editor/github#_cloning-a-repository), [PyCharm](https://www.jetbrains.com/help/pycharm/manage-projects-hosted-on-github.html#clone-from-GitHub), [GitKraken](https://www.gitkraken.com/learn/git/git-clone), or in terminal with:
 
 ```sh
 git clone https://github.com/JustinGoheen/lightning-pod.git --depth 1 --branch main --single-branch
