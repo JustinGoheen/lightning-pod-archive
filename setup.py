@@ -1,11 +1,11 @@
 import setuptools
 
 setuptools.setup(
-    name="",
-    version="0.1.0",
-    description="",
+    name="lightning-pod",
+    version="0.0.1",
+    description="A robust PyTorch Lightning research environment",
     url="",
-    author="",
+    author="Justin Goheen",
     install_requires=[""],
     author_email="",
     packages=setuptools.find_packages(),
