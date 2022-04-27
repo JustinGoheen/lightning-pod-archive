@@ -12,4 +12,7 @@ sympy
 black
 mypy
 ipywidgets
+setuptools
+build
+twine
 git+https://github.com/JustinGoheenOrg/easy-sphinx.git
