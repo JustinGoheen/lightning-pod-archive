@@ -1,7 +1,7 @@
 # code example is from:
 # https://pytorch-lightning.readthedocs.io/en/latest/common/lightning_module.html
 
-from asyncio import FastChildWatcher
+
 import os
 import pytorch_lightning as pl
 from torch.utils.data import DataLoader
