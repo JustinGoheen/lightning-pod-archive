@@ -36,11 +36,14 @@ In addition to PyTorch Lightning, requirements.txt will also install:
 - [lightning-transformers](https://lightning-transformers.readthedocs.io/en/latest/)
 - [torchvision](https://pytorch.org/vision/stable/index.html)
 - [torchaudio](https://pytorch.org/audio/stable/index.html)
-- Hugging Face's [datasets](https://huggingface.co/docs/datasets/index)
+- [torchtext](https://pytorch.org/text/stable/index.html)
+- [datasets](https://huggingface.co/docs/datasets/index), curated datasets by Hugging Face
 - [SymPy](https://www.sympy.org/en/index.html) (symbolic mathematics)
 - [Plotly](https://plotly.com/python/) (data visualization)
 - [Black](https://black.readthedocs.io/en/stable/) (formatting)
 - [MyPy](https://github.com/python/mypy/tree/38f1e30e8137ccc1aad6a4f113eb4360c6206539) (static type checker)
+- [pre-commit](https://pre-commit.com/) (code review)
+- [PyTest](pytest) (testing utility)
 - [easy-sphinx](https://github.com/JustinGoheenOrg/easy-sphinx) (Sphinx-autodoc + [material for mkdocs](https://squidfunk.github.io/mkdocs-material/))
 
 Security minded engineers can opt for [deepsource](https://deepsource.io/), [pyre/pysa](https://pyre-check.org/), or [Bandit](https://github.com/PyCQA/bandit). This template uses deepsource (account required) and GitHub's [CodeQL](https://github.com/github/codeql-action).
@@ -80,7 +83,7 @@ Grid.ai support TensorBoard in the [Runs](https://docs.grid.ai/features/runs/Ana
 
 ## Learning PyTorch Lightning
 
-Rather than diving into PyTorch Lightning by building a model, it is suggested to watch the following 4 videos by the PyTorch Lightning team:
+Rather than diving into PyTorch Lightning by building a model, it is suggested to watch the following 4 videos by the PyTorch Lightning team; these videos help to familiarize users with the codebase:
 
 1. [Lightning Code Base Hardcore Deep Dive](https://youtu.be/aEeh9ucKUkU)
 2. [Deep Dive into a Single Example Code Flow](https://youtu.be/NEpRYqdsm54)

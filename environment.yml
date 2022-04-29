@@ -17,6 +17,8 @@ dependencies:
       - lightning-transformers
       - matplotlib
       - plotly
+      - pytest
+      - pre-commit
       - pytorch-lightning
       - setuptools
       - tensorboard
