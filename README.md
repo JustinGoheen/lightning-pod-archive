@@ -78,6 +78,17 @@ VS Code users can learn more about PyTorch development and TensorBoard on the [o
 
 Grid.ai support TensorBoard in the [Runs](https://docs.grid.ai/features/runs/Analyzing%20Runs/metric-charts#tensorboard) web interface.
 
+## Learning PyTorch Lightning
+
+Rather than diving into PyTorch Lightning by building a model, it is suggested to watch the following 4 videos by the PyTorch Lightning team:
+
+1. [Lightning Code Base Hardcore Deep Dive](https://youtu.be/aEeh9ucKUkU)
+2. [Deep Dive into a Single Example Code Flow](https://youtu.be/NEpRYqdsm54)
+3. [Part 3 Lightning Codebase Deep Dive](https://youtu.be/x4d4RDNJaZk)
+4. [Fault Tolerance](https://youtu.be/aUtn7H1jYl4)
+
+After watching the videos, one can use the official [guides](https://pytorch-lightning.readthedocs.io/en/latest/expertise_levels.html) to level up their skills.
+
 ## Why PyTorch Lightning
 
 PyTorch Lightning is an easy to use, cloud-training ready framework equipped with robust utilities that allows researchers to focus on research, and not engineering.
@@ -88,4 +99,4 @@ PyTorch Lightning is well [documented](https://pytorch-lightning.readthedocs.io/
 
 PyTorch Lightning has a large community of users who are active in [Slack](https://join.slack.com/t/pytorch-lightning/shared_invite/zt-12iz3cds1-uyyyBYJLiaL2bqVmMN7n~A) and GitHub [Discussions](https://github.com/PyTorchLightning/pytorch-lightning/discussions).
 
-PyTorch Lightning models are ready for distributed training with [Grid.ai](https://www.grid.ai/). Scaling to multi-GPU or TPU training environments can be as easy as logging into Grid's web interface, connecting a GitHub repo, selecting a machine type [CPU, GPU, TPU] from a cost-transparent list, and connecting to a [datastore](https://docs.grid.ai/features/datastores).
+PyTorch Lightning models are ready for distributed training with [Grid.ai](https://www.grid.ai/). Scaling training environments can be as easy as logging into Grid's web interface, connecting a GitHub repo, selecting a machine type [CPU, GPU, TPU, IPU, HPU] from a cost-transparent list, and connecting to a [datastore](https://docs.grid.ai/features/datastores).
