@@ -8,7 +8,7 @@ A template repo for [PyTorch Lightning](https://www.pytorchlightning.ai/) in [Gi
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/JustinGoheen/lightning-pod)
 
-Refer to the [wiki](https://github.com/JustinGoheen/lightning-pod/wiki) for additional guides.
+<!-- Refer to the [wiki](https://github.com/JustinGoheen/lightning-pod/wiki) for additional guides. -->
 
 ## The basics
 
