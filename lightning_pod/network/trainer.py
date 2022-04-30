@@ -11,9 +11,18 @@ from .model import LitModel
 
 if __name__ == "__main__":
 
+    rootpath = os.getcwd()
+    datapath = "".join([rootpath, "/", "data", "/", "cache"])
+
+    if not os.path.isdir(datapath):
+        os.mkdir(datapath)
+
+    download = True if not os.listdir(datapath) else False
+
     train_loader = DataLoader(
-        MNIST(os.getcwd(), download=True, transform=transforms.ToTensor())
+        MNIST(datapath, download=download, transform=transforms.ToTensor())
     )
+
     trainer = pl.Trainer(max_epochs=1, fast_dev_run=True)
     model = LitModel()
 
