@@ -4,24 +4,12 @@
 
 import os
 import pytorch_lightning as pl
-from torch.utils.data import DataLoader
-from torchvision.datasets import MNIST
-from torchvision import transforms
-from .model import LitModel
+from lightning_pod.network.model import LitModel
+from lightning_pod.pipeline.acquisition import get_data
 
 if __name__ == "__main__":
 
-    rootpath = os.getcwd()
-    datapath = "".join([rootpath, "/", "data", "/", "cache"])
-
-    if not os.path.isdir(datapath):
-        os.mkdir(datapath)
-
-    download = True if not os.listdir(datapath) else False
-
-    train_loader = DataLoader(
-        MNIST(datapath, download=download, transform=transforms.ToTensor())
-    )
+    train_loader = get_data(dataset_name="mnist", return_loader=True)
 
     trainer = pl.Trainer(max_epochs=1, fast_dev_run=True)
     model = LitModel()
