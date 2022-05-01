@@ -19,6 +19,8 @@ def _fetch_data(datapath):
 def get_data(return_loader=True):
     rootpath = os.getcwd()
     datapath = "".join([rootpath, "/", "data", "/", "cache"])
+    if not os.path.isdir(datapath):
+        os.mkdir(datapath)
     dataset = _fetch_data(datapath)
     if not return_loader:
         return dataset
