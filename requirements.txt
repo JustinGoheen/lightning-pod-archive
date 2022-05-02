@@ -14,7 +14,4 @@ mypy
 pytest
 pre-commit
 ipywidgets
-setuptools
-build
-twine
 git+https://github.com/JustinGoheenOrg/easy-sphinx.git
