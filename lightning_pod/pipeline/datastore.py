@@ -1,10 +1,10 @@
 import os
-import acquisition
+from lightning_pod.pipeline.acquisition import get_data
 
 if __name__ == "__main__":
 
     rootpath = os.getcwd()
     datapath = "".join([rootpath, "/", "data", "/", "cache"])
-    dataset = acquisition.get_data(return_loader=False)
+    dataset = get_data(return_loader=False)
     storename = dataset.__class__.__name__
     os.system(f"grid datastore create {datapath} --name {storename}")
