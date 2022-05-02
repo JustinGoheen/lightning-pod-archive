@@ -61,6 +61,26 @@ conda env create --file environment.yml
 
 Using the above will create a new conda env titled `lightning-base`.
 
+## Using the built-in example
+
+> running the following example will download the MNIST dataset to `data/cache/MNIST` in the cloned directory and will run a trainer with fast_dev_run
+
+Once the repo has been cloned, open the project in your editor of choice and install an editable version of the package with
+
+```sh
+pip install -e .
+```
+
+and then run 
+
+```sh
+python lightning_pod/network/trainer.py 
+```
+
+the results are shown below
+
+![](https://github.com/JustinGoheen/lightning-pod/blob/main/docs/imgs/example_run.png)
+
 ## Suggested use
 
 This template is mostly for distributed teams who can benefit from a tool like Gitpod. Individuals who wish to share open source work can use this template as a guideline for creating reproducible projects. Use of Gitpod is not required for individuals who do not fit into one of those two categories; these individuals can still benefit from forking the repo as a template and simply removing the `.gitpod.yml` file from the project directory. 
