@@ -1,6 +1,7 @@
 import os
 from torch.utils.data import DataLoader
-from torchvision import MNIST, transforms
+from torchvision import transforms
+from torchvision.datasets import MNIST
 
 
 def _download(datapath):
