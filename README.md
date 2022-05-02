@@ -81,19 +81,6 @@ the results are shown below
 
 ![](https://github.com/JustinGoheen/lightning-pod/blob/main/docs/imgs/example_run.png)
 
-## Suggested use
-
-This template is mostly for teams and individuals who can benefit from a tool like Gitpod in creating reproducible development environments. Use of Gitpod is not required for individuals who do not fit into one of those two categories; these individuals can still benefit from forking the repo as a template and simply removing the `.gitpod.yml` file from the project directory. 
-
-> It is not recommended to start a Grid Session from within a Gitpod Workspace; doing so may accrue compute hours in both platforms.
-
-The best practice would be to: develop in Gitpod using a development-sized (toy) dataset (i.e. [fast_dev_run](https://pytorch-lightning.readthedocs.io/en/stable/common/debugging.html#quick-unit-testing) in PyTorch Lightning) and then start the Grid Session locally from your machine (i.e. all updates have been pushed to GitHub and the Gitpod Workspace has been shutdown).
-
-Once the full project requirements have been determined, it is best to replace the current requirements.txt with
-
-```sh
-pip freeze > requirements.txt
-```
 
 ## TensorBoard
 
