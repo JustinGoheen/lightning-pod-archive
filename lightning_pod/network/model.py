@@ -9,6 +9,7 @@ import pytorch_lightning as pl
 
 class Encoder(nn.Module):
     def __init__(self):
+        super().__init__()
         self.l1 = nn.Sequential(nn.Linear(28 * 28, 64), nn.ReLU(), nn.Linear(64, 3))
 
     def forward(self, x):
@@ -17,6 +18,7 @@ class Encoder(nn.Module):
 
 class Decoder(nn.Module):
     def __init__(self):
+        super().__init__()
         self.l1 = nn.Sequential(nn.Linear(3, 64), nn.ReLU(), nn.Linear(64, 28 * 28))
 
     def forward(self, x):
@@ -34,8 +36,8 @@ class LitModel(pl.LightningModule):
         x, y = batch
         x = x.view(x.size(0), -1)
         z = self.encoder(x)
-        x_hat = self.decoder(z)
-        loss = F.mse_loss(x_hat, x)
+        y_hat = self.decoder(z)
+        loss = F.mse_loss(y_hat, x)
         return loss
 
     def configure_optimizers(self):
