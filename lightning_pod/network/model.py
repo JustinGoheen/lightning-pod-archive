@@ -2,9 +2,9 @@
 # https://pytorch-lightning.readthedocs.io/en/latest/model/train_model_basic.html
 
 import torch
-from torch import nn
 import torch.nn.functional as F
 import pytorch_lightning as pl
+from torch import nn
 
 
 class Encoder(nn.Module):
