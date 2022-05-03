@@ -1,4 +1,4 @@
-name: lightning-base
+name: lightning-pod
 channels:
   - conda-forge
 dependencies:
@@ -17,11 +17,8 @@ dependencies:
       - matplotlib
       - plotly
       - pytest
-      - pre-commit
       - pytorch-lightning
-      - tensorboard
       - torchaudio
-      - torchmetrics
       - torchtext
       - torchvision
       - git+https://github.com/JustinGoheenOrg/easy-sphinx.git

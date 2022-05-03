@@ -12,6 +12,5 @@ sympy
 black
 mypy
 pytest
-pre-commit
 ipywidgets
 git+https://github.com/JustinGoheenOrg/easy-sphinx.git
