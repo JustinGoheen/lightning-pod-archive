@@ -59,7 +59,7 @@ cd {{ path_to_clone }}
 conda env create --file environment.yml
 ```
 
-Using the above will create a new conda env titled `lightning-base`.
+Using the above will create a new conda env titled `lightning-pod`.
 
 ## Using the built-in example
 
