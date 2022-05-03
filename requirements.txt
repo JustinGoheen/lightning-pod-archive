@@ -13,4 +13,4 @@ black
 mypy
 pytest
 ipywidgets
-git+https://github.com/JustinGoheenOrg/easy-sphinx.git
+git+https://github.com/JustinGoheen/material-sphinx.git

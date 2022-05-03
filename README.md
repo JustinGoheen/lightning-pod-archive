@@ -41,7 +41,7 @@ In addition to PyTorch Lightning, requirements.txt will also install:
 - [Black](https://black.readthedocs.io/en/stable/) (formatting)
 - [MyPy](https://github.com/python/mypy/tree/38f1e30e8137ccc1aad6a4f113eb4360c6206539) (static type checker)
 - [PyTest](pytest) (testing utility)
-- [easy-sphinx](https://github.com/JustinGoheenOrg/easy-sphinx) (Sphinx-autodoc + [material for mkdocs](https://squidfunk.github.io/mkdocs-material/))
+- [material-sphinx](https://github.com/JustinGoheen/material-sphinx) (Sphinx-autodoc + [material for mkdocs](https://squidfunk.github.io/mkdocs-material/))
 
 Security minded engineers can opt for [deepsource](https://deepsource.io/), [pyre/pysa](https://pyre-check.org/), or [Bandit](https://github.com/PyCQA/bandit). This template uses deepsource (account required) and GitHub's [CodeQL](https://github.com/github/codeql-action).
 
