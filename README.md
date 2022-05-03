@@ -8,19 +8,17 @@ A template repo for [PyTorch Lightning](https://www.pytorchlightning.ai/) in [Gi
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/JustinGoheen/lightning-pod)
 
-<!-- Refer to the [wiki](https://github.com/JustinGoheen/lightning-pod/wiki) for additional guides. -->
+Refer to the [wiki](https://github.com/JustinGoheen/lightning-pod/wiki) for additional guides.
 
 ## The basics
 
 This template can aid in creating and sharing reproducible projects structured according to potential best practices for researchers.
 
-The intent is that you clone the repo each time you need to begin a fresh project. The repo can be cloned from within [VS Code](https://code.visualstudio.com/docs/editor/github#_cloning-a-repository), [PyCharm](https://www.jetbrains.com/help/pycharm/manage-projects-hosted-on-github.html#clone-from-GitHub), [GitKraken](https://www.gitkraken.com/learn/git/git-clone), or in terminal with:
+The intent is that you clone the repo each time you begin a new project. The repo can be cloned from within [VS Code](https://code.visualstudio.com/docs/editor/github#_cloning-a-repository), [PyCharm](https://www.jetbrains.com/help/pycharm/manage-projects-hosted-on-github.html#clone-from-GitHub), [GitKraken](https://www.gitkraken.com/learn/git/git-clone), or in terminal with:
 
 ```sh
 git clone https://github.com/JustinGoheen/lightning-pod.git --depth 1 --branch main --single-branch
 ```
-
-Please star this repo if you use it.
 
 ## The environment
 
@@ -32,7 +30,7 @@ Installing pytorch-lightning also installs:
 - [TensorBoard](https://www.tensorflow.org/tensorboard)
 
 In addition to PyTorch Lightning, requirements.txt will also install: 
-- [Grid.ai](https://www.grid.ai/)
+- [lightning-grid](https://www.grid.ai/)
 - [lightning-transformers](https://lightning-transformers.readthedocs.io/en/latest/)
 - [torchvision](https://pytorch.org/vision/stable/index.html)
 - [torchaudio](https://pytorch.org/audio/stable/index.html)
@@ -42,13 +40,11 @@ In addition to PyTorch Lightning, requirements.txt will also install:
 - [Plotly](https://plotly.com/python/) (data visualization)
 - [Black](https://black.readthedocs.io/en/stable/) (formatting)
 - [MyPy](https://github.com/python/mypy/tree/38f1e30e8137ccc1aad6a4f113eb4360c6206539) (static type checker)
-- [pre-commit](https://pre-commit.com/) (code review)
 - [PyTest](pytest) (testing utility)
 - [easy-sphinx](https://github.com/JustinGoheenOrg/easy-sphinx) (Sphinx-autodoc + [material for mkdocs](https://squidfunk.github.io/mkdocs-material/))
 
 Security minded engineers can opt for [deepsource](https://deepsource.io/), [pyre/pysa](https://pyre-check.org/), or [Bandit](https://github.com/PyCQA/bandit). This template uses deepsource (account required) and GitHub's [CodeQL](https://github.com/github/codeql-action).
 
-> remove the `.deepsource.toml` file if using pyre/pysa or bandit
 
 ### M1 powered Macs
 
@@ -65,7 +61,7 @@ Using the above will create a new conda env titled `lightning-pod`.
 
 > running the following example will download the MNIST dataset to `data/cache/MNIST` in the cloned directory and will run a trainer with fast_dev_run
 
-Once the repo has been cloned, open the project in your editor of choice and install an editable version of the package with
+Once the repo has been cloned, open the project in your editor of choice and install an editable version of lightning-pod with
 
 ```sh
 pip install -e .
@@ -77,7 +73,7 @@ and then run
 python lightning_pod/network/trainer.py 
 ```
 
-the results are shown below
+the intended results are shown below
 
 ![](https://github.com/JustinGoheen/lightning-pod/blob/main/docs/imgs/example_run.png)
 
@@ -86,7 +82,7 @@ the results are shown below
 
 VS Code users can learn more about PyTorch development and TensorBoard on the [official](https://code.visualstudio.com/docs/datascience/pytorch-support) VS Code site.
 
-Grid.ai support TensorBoard in the [Runs](https://docs.grid.ai/features/runs/Analyzing%20Runs/metric-charts#tensorboard) web interface.
+Grid.ai supports TensorBoard in the [Runs](https://docs.grid.ai/features/runs/Analyzing%20Runs/metric-charts#tensorboard) web interface.
 
 ## Learning PyTorch Lightning
 
