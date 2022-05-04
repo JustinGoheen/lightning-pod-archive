@@ -20,6 +20,8 @@ The intent is that you clone the repo each time you begin a new project. The rep
 git clone https://github.com/JustinGoheen/lightning-pod.git --depth 1 --branch main --single-branch
 ```
 
+### Core files
+
 The two most important files are [lightning_pod.network.model](https://github.com/JustinGoheen/lightning-pod/blob/main/lightning_pod/network/model.py) and [lightning_pod.network.trainer](https://github.com/JustinGoheen/lightning-pod/blob/main/lightning_pod/network/trainer.py). `model.py` contains the PyTorch Lightning LightningModule and inner layer torch.nn Modules, and `trainer.py` contains the PyTorch Lightning Trainer. A LightningModule is effectively _the algorithm_ and a Trainer is the training recipe i.e. it is the object used to tell the LightningModule how to train.
 
 ## The environment
@@ -34,6 +36,8 @@ Installing pytorch-lightning also installs:
 In addition to PyTorch Lightning, requirements.txt will also install: 
 - [lightning-grid](https://www.grid.ai/)
 - [lightning-transformers](https://lightning-transformers.readthedocs.io/en/latest/)
+- [lightning-bolts](https://lightning-bolts.readthedocs.io/en/stable/)
+- [lightning-flash](https://lightning-flash.readthedocs.io/en/stable/)
 - [torchvision](https://pytorch.org/vision/stable/index.html)
 - [torchaudio](https://pytorch.org/audio/stable/index.html)
 - [torchtext](https://pytorch.org/text/stable/index.html)
@@ -46,6 +50,9 @@ In addition to PyTorch Lightning, requirements.txt will also install:
 - [material-sphinx](https://github.com/JustinGoheen/material-sphinx) (Sphinx-autodoc + [material for mkdocs](https://squidfunk.github.io/mkdocs-material/))
 
 Security minded engineers can opt for [deepsource](https://deepsource.io/), [pyre/pysa](https://pyre-check.org/), or [Bandit](https://github.com/PyCQA/bandit) for Python code coverage, and GitHub's [CodeQL](https://github.com/github/codeql-action) for general coverage. This template uses deepsource (account required) and CodeQL.
+
+
+> `requirements.txt` has been organized according to purpose so that users can delete unneccesary dependencies prior to installing locally or running in Gitpod.
 
 
 ### M1 powered Macs
