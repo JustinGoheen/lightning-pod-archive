@@ -1,16 +1,24 @@
+# BASE [DO NOT DELETE]
 pytorch-lightning
-lightning-transformers
 lightning-grid
+# TEXT
+lightning-transformers
+torchtext
+# VISION
+torchvision
+# AUDIO
+torchaudio
+# LIGHTNING ECOSYSTEM
 lightning-bolts
 lightning-flash
-torchvision
-torchaudio
-torchtext
-datasets
+# PLOTTING AND SYMBOLIC MATH
 plotly
 sympy
+# FORMMATING, STATIC CHECKS, TESTING
 black
 mypy
 pytest
+# TQDM SUPPORT IN NOTEBOOKS
 ipywidgets
+# SOURCE CODE DOCUMENTATION
 git+https://github.com/JustinGoheen/material-sphinx.git
