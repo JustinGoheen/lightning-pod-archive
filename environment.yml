@@ -8,7 +8,6 @@ dependencies:
   - tokenizers
   - pip:
       - black
-      - datasets
       - ipywidgets
       - lightning-bolts
       - lightning-flash
