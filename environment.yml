@@ -18,6 +18,7 @@ dependencies:
       - pytest
       - pytorch-lightning
       - torchaudio
+      - torchinfo
       - torchtext
       - torchvision
       - git+https://github.com/JustinGoheen/material-sphinx.git
