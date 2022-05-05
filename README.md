@@ -41,14 +41,15 @@ In addition to PyTorch Lightning, requirements.txt will also install:
 - [torchvision](https://pytorch.org/vision/stable/index.html)
 - [torchaudio](https://pytorch.org/audio/stable/index.html)
 - [torchtext](https://pytorch.org/text/stable/index.html)
-- [datasets](https://huggingface.co/docs/datasets/index) (curated datasets by Hugging Face)
+- [torchinfo](https://github.com/TylerYep/torchinfo) (nn.module and LightningModule summaries)
 - [SymPy](https://www.sympy.org/en/index.html) (symbolic mathematics)
 - [Plotly](https://plotly.com/python/) (data visualization)
 - [Black](https://black.readthedocs.io/en/stable/) (formatting)
 - [MyPy](https://github.com/python/mypy/tree/38f1e30e8137ccc1aad6a4f113eb4360c6206539) (static type checker)
 - [flake8](https://flake8.pycqa.org/en/latest/#) (linting)
+- [coverage](https://coverage.readthedocs.io/en/6.3.2/) (measuring code coverage)
 - [PyTest](pytest) (testing utility)
-- [torchinfo](https://github.com/TylerYep/torchinfo) (nn.module and LightningModule summaries)
+
 - [material-sphinx](https://github.com/JustinGoheen/material-sphinx) (Sphinx-autodoc + [material for mkdocs](https://squidfunk.github.io/mkdocs-material/))
 
 Security minded engineers can opt for [deepsource](https://deepsource.io/), [pyre/pysa](https://pyre-check.org/), or [Bandit](https://github.com/PyCQA/bandit) for Python code coverage, and GitHub's [CodeQL](https://github.com/github/codeql-action) for general coverage. This template uses deepsource (account required) and CodeQL.

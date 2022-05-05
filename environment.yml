@@ -8,6 +8,7 @@ dependencies:
   - tokenizers
   - pip:
       - black
+      - coverage
       - flake8
       - ipywidgets
       - lightning-bolts
