@@ -41,7 +41,6 @@ In addition to PyTorch Lightning, requirements.txt will also install:
 - [torchvision](https://pytorch.org/vision/stable/index.html)
 - [torchaudio](https://pytorch.org/audio/stable/index.html)
 - [torchtext](https://pytorch.org/text/stable/index.html)
-- [torchinfo](https://github.com/TylerYep/torchinfo) (nn.module and LightningModule summaries)
 - [SymPy](https://www.sympy.org/en/index.html) (symbolic mathematics)
 - [Plotly](https://plotly.com/python/) (data visualization)
 - [Black](https://black.readthedocs.io/en/stable/) (formatting)

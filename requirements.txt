@@ -20,8 +20,6 @@ flake8
 pytest
 mypy
 coverage
-# LAYER SUMMARIES
-torchinfo
 # TQDM SUPPORT IN NOTEBOOKS
 ipywidgets
 # SOURCE CODE DOCUMENTATION
