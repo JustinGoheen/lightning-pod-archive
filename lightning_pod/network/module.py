@@ -1,10 +1,9 @@
 # code example is from:
 # https://pytorch-lightning.readthedocs.io/en/latest/model/train_model_basic.html
 
-import torch
-import torch.nn.functional as F
 import pytorch_lightning as pl
-from torch import nn
+import torch.nn.functional as F
+from torch import nn, optim
 
 
 class Encoder(nn.Module):
@@ -70,10 +69,10 @@ class LitModel(pl.LightningModule):
         x, y = batch
         x = x.view(x.size(0), -1)
         z = self.encoder(x)
-        y_hat = self.decoder(z)
-        loss = F.mse_loss(y_hat, x)
+        x_hat = self.decoder(z)
+        loss = F.mse_loss(x_hat, x)
         return loss
 
     def configure_optimizers(self):
-        optimizer = torch.optim.Adam(self.parameters(), lr=1e-3)
+        optimizer = optim.Adam(self.parameters(), lr=1e-3)
         return optimizer
