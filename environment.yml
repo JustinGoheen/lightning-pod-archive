@@ -8,12 +8,14 @@ dependencies:
   - tokenizers
   - pip:
       - black
+      - flake8
       - ipywidgets
       - lightning-bolts
       - lightning-flash
       - lightning-grid
       - lightning-transformers
       - matplotlib
+      - mypy
       - plotly
       - pytest
       - pytorch-lightning
