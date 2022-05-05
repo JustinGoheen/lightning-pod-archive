@@ -3,7 +3,7 @@
 
 
 import pytorch_lightning as pl
-from lightning_pod.network.model import LitModel, Encoder, Decoder
+from lightning_pod.network.module import LitModel, Encoder, Decoder
 from lightning_pod.pipeline.acquisition import get_data
 
 if __name__ == "__main__":
