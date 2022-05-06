@@ -41,7 +41,9 @@ Aside from PyTorch Lightning ecosystem libraries, the template environment provi
 Researchers in need of datasets can leverage the inclusion of torchvision, torchtext, torchaudio, and lighting-bolts to access datasets for projects.
 
 ### Add-ons
-The template environment includes tools to visualize data transformations with plotly or matplotlib; it includes SymPy to help create LaTeX notation images and code snippets; and lastly, researchers can use material-sphinx to build documentation from source code.
+The template environment includes tools to visualize data transformations with plotly or matplotlib; it includes SymPy to help create LaTeX notation images and code snippets.
+
+> template files will be added to enable source code documentation using sphinx and autodoc for material-for-mkdocs
 
 ### Code coverage and security
 This template uses [deepsource](https://deepsource.io/) (account required) for coverage and GitHub's [CodeQL](https://github.com/github/codeql-action) for security.
@@ -72,11 +74,6 @@ In addition to PyTorch Lightning, requirements.txt will also install:
 - [flake8](https://flake8.pycqa.org/en/latest/#) (linting)
 - [coverage](https://coverage.readthedocs.io/en/6.3.2/) (measuring code coverage)
 - [PyTest](pytest) (testing utility)
-
-- [material-sphinx](https://github.com/JustinGoheen/material-sphinx) (Sphinx-autodoc + [material for mkdocs](https://squidfunk.github.io/mkdocs-material/))
-
-
-
 
 
 ### M1 powered Macs

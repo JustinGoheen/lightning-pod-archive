@@ -23,5 +23,3 @@ mypy
 coverage
 # TQDM SUPPORT IN NOTEBOOKS
 ipywidgets
-# SOURCE CODE DOCUMENTATION
-git+https://github.com/JustinGoheen/material-sphinx.git

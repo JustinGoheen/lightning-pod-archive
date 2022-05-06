@@ -23,5 +23,4 @@ dependencies:
       - torchaudio
       - torchtext
       - torchvision
-      - git+https://github.com/JustinGoheen/material-sphinx.git
 prefix: /opt/homebrew/Caskroom/miniforge/base/envs/lightning
