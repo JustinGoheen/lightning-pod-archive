@@ -13,6 +13,7 @@ lightning-bolts
 lightning-flash
 # PLOTTING AND SYMBOLIC MATH
 plotly
+matplotlib
 sympy
 # FORMMATING, LINTING, TESTING, STATIC TYPE CHECKING, COVERAGE
 black
