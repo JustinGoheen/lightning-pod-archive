@@ -1,1 +1,1 @@
-The data directory for Hugging Face data cache
+The data directory for the data cache
