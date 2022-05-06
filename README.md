@@ -4,27 +4,51 @@
 [![](https://img.shields.io/badge/Gitpod-DevEnv-informational?style=flat&logo=gitpod&logoColor=white&color=2bbc8a)](#)
 
 
-A template repo for [PyTorch Lightning](https://www.pytorchlightning.ai/) in [Gitpod](https://www.gitpod.io/).
+A template environment and system architecture for [PyTorch Lightning](https://www.pytorchlightning.ai/) and [Grid.ai](https://www.grid.ai/) in [Gitpod](https://www.gitpod.io/).
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/JustinGoheen/lightning-pod)
+
+Please note that Gitpod is to be used (if needed) during the initial development phases, and Grid [Sessions](https://docs.grid.ai/features/sessions) should be used to test on the desired machine type once the LightningModule and Trainer are functioning as intended on a [fast_dev_run](https://pytorch-lightning.readthedocs.io/en/stable/common/trainer.html#fast-dev-run) in Gitpod or locally. Once a model is out of development and is ready to be trained, a Grid [Run](https://docs.grid.ai/features/runs/README) should be used to train the model.
 
 Refer to the [wiki](https://github.com/JustinGoheen/lightning-pod/wiki) for additional guides.
 
 ## The basics
 
-This template can aid in creating and sharing reproducible projects structured according to potential best practices for researchers.
+This template can aid in creating reproducible projects that share a common architecture, increasing the readility of codebases and inspection of training logs adhering to the template.
 
-The intent is that you clone the repo each time you begin a new project. The repo can be cloned from within [VS Code](https://code.visualstudio.com/docs/editor/github#_cloning-a-repository), [PyCharm](https://www.jetbrains.com/help/pycharm/manage-projects-hosted-on-github.html#clone-from-GitHub), [GitKraken](https://www.gitkraken.com/learn/git/git-clone), or in terminal with:
+The intent is that you fork this template, and set it as a [template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-template-repository) repo in GitHub. Setting this repo as a template will allow you to [create a new repo from the template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template) in GitHub's web interface or CLI. Using the recommended method will also allow you to keep the fork up to date by using [fetch-upstream](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork).
+
+Alternatively, one can clone the fork and reset the git history with:
 
 ```sh
-git clone https://github.com/JustinGoheen/lightning-pod.git --depth 1 --branch main --single-branch
+git clone https://github.com/{{ YOUR_USER_NAME }}/lightning-pod.git --branch main
+cd {{ path_to_clone }}
+rm -rf .git
+git init
 ```
+
+Once the new git repo is intialized, it can be published to upstream using the desired method.
 
 ### Core files
 
-The two most important files are [lightning_pod.network.model](https://github.com/JustinGoheen/lightning-pod/blob/main/lightning_pod/network/model.py) and [lightning_pod.network.trainer](https://github.com/JustinGoheen/lightning-pod/blob/main/lightning_pod/network/trainer.py). `model.py` contains the PyTorch Lightning LightningModule and inner layer torch.nn Modules, and `trainer.py` contains the PyTorch Lightning Trainer. A LightningModule is effectively _the algorithm_ and a Trainer is the training recipe i.e. it is the object used to tell the LightningModule how to train.
+The two most important files are [lightning_pod.network.model](https://github.com/JustinGoheen/lightning-pod/blob/main/lightning_pod/network/model.py) and [lightning_pod.network.trainer](https://github.com/JustinGoheen/lightning-pod/blob/main/lightning_pod/network/trainer.py). `model.py` contains the PyTorch Lightning [LightningModule](https://pytorch-lightning.readthedocs.io/en/stable/common/lightning_module.html) and inner layer torch.nn Modules, and `trainer.py` contains the PyTorch Lightning [Trainer](https://pytorch-lightning.readthedocs.io/en/stable/common/trainer.html). A LightningModule is effectively _the algorithm_ and a Trainer is the training recipe i.e. it is the component used to tell the LightningModule how to train and which plugins and callbacks the system should incorporate.
 
 ## The environment
+
+Aside from PyTorch Lightning ecosystem libraries, the template environment provides access to additional tools that enable quality research projects.
+
+### Data
+Researchers in need of datasets can leverage the inclusion of torchvision, torchtext, torchaudio, and lighting-bolts to access datasets for projects.
+
+### Add-ons
+The template environment includes tools to visualize data transformations with plotly or matplotlib; it includes SymPy to help create LaTeX notation images and code snippets; and lastly, researchers can use material-sphinx to build documentation from source code.
+
+### Code coverage and security
+This template uses [deepsource](https://deepsource.io/) (account required) for coverage and GitHub's [CodeQL](https://github.com/github/codeql-action) for security.
+
+### Installs
+
+> `requirements.txt` has been organized according to purpose so that users can delete unneccesary dependencies prior to installing locally or running in Gitpod
 
 Installing pytorch-lightning also installs: 
 
@@ -51,10 +75,8 @@ In addition to PyTorch Lightning, requirements.txt will also install:
 
 - [material-sphinx](https://github.com/JustinGoheen/material-sphinx) (Sphinx-autodoc + [material for mkdocs](https://squidfunk.github.io/mkdocs-material/))
 
-Security minded engineers can opt for [deepsource](https://deepsource.io/), [pyre/pysa](https://pyre-check.org/), or [Bandit](https://github.com/PyCQA/bandit) for Python code coverage, and GitHub's [CodeQL](https://github.com/github/codeql-action) for general coverage. This template uses deepsource (account required) and CodeQL.
 
 
-> `requirements.txt` has been organized according to purpose so that users can delete unneccesary dependencies prior to installing locally or running in Gitpod.
 
 
 ### M1 powered Macs
@@ -89,11 +111,11 @@ the intended results are shown below
 ![](https://github.com/JustinGoheen/lightning-pod/blob/main/docs/imgs/example_run.png)
 
 
-## TensorBoard
+## VS Code PyTorch Profiler and TensorBoard
 
-VS Code users can learn more about PyTorch development and TensorBoard on the [official](https://code.visualstudio.com/docs/datascience/pytorch-support) VS Code site.
+VS Code users can learn more about PyTorch integrations on the [official](https://code.visualstudio.com/docs/datascience/pytorch-support) VS Code site.
 
-Grid.ai supports TensorBoard in the [Runs](https://docs.grid.ai/features/runs/Analyzing%20Runs/metric-charts#tensorboard) web interface.
+> Grid.ai supports TensorBoard in the [Runs](https://docs.grid.ai/features/runs/Analyzing%20Runs/metric-charts#tensorboard) web interface.
 
 ## Learning PyTorch Lightning
 
