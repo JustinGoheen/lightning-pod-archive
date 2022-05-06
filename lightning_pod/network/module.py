@@ -9,13 +9,11 @@ from torch import nn, optim
 class Encoder(nn.Module):
     """an encoder layer
 
-    # Arguments
-
+    Args:
         None: no arguments are required at initialization.
 
-    # Returns
-
-    an encoded rank 2 Tensor.
+    Returns:
+        an encoded rank 2 Tensor.
     """
 
     def __init__(self):
@@ -29,13 +27,11 @@ class Encoder(nn.Module):
 class Decoder(nn.Module):
     """a decoder layer
 
-    # Arguments
-
+    Args:
         None: no arguments are required at initialization.
 
-    # Returns
-
-    a decoded rank 2 Tensor.
+    Returns:
+        a decoded rank 2 Tensor.
     """
 
     def __init__(self):
@@ -49,14 +45,12 @@ class Decoder(nn.Module):
 class LitModel(pl.LightningModule):
     """a custom PyTorch Lightning Module
 
-    # Arguments
+    Args:
+        encoder (nn.Module): an encoder layer.
+        decoder (nn.Module): a decoder layer.
 
-        encoder: an encoder layer.
-        decoder: a decoder layer.
-
-    # Returns
-
-    a LightningModule fit to the training dataset.
+    Returns:
+        a LightningModule fit to the training dataset.
     """
 
     def __init__(self, encoder, decoder):
