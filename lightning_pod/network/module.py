@@ -75,6 +75,7 @@ class LitModel(pl.LightningModule):
         z = self.encoder(x)
         x_hat = self.decoder(z)
         loss = F.mse_loss(x_hat, x)
+        self.log("loss", loss)
         return loss
 
     def configure_optimizers(self):

@@ -27,7 +27,7 @@ if __name__ == "__main__":
     cwd = os.getcwd()
     # SET LOGGER
     logs_dir = "".join([cwd, "/", "logs"])
-    logger = TensorBoardLogger(save_dir=logs_dir, name="lightning_logs")
+    logger = TensorBoardLogger(logs_dir, name="lightning_logs")
     # SET PROFILER
     profile_dir = "".join([logs_dir, "/", "profiler"])
     profiler = SimpleProfiler(dirpath=profile_dir, filename="profiler", extended=True)
