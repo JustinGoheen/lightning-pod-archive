@@ -1,1 +1,1 @@
-Your Tensorboard logs will get pushed to this directory
+Your logger results and profiler output will get pushed to this directory
