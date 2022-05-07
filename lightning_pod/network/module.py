@@ -23,9 +23,19 @@ class Encoder(nn.Module):
     def __init__(self):
         super().__init__()
         self.l1 = nn.Sequential(
-            nn.Linear(in_features=28 * 28, out_features=64),
-            nn.ReLU(),
-            nn.Linear(in_features=64, out_features=3),
+            nn.Linear(
+                in_features=28 * 28,
+                out_features=64,
+                bias=True,  # default
+            ),
+            nn.ReLU(
+                inplace=False,  # default
+            ),
+            nn.Linear(
+                in_features=64,
+                out_features=3,
+                bias=True,  # default
+            ),
         )
 
     def forward(self, x):
@@ -45,9 +55,19 @@ class Decoder(nn.Module):
     def __init__(self):
         super().__init__()
         self.l1 = nn.Sequential(
-            nn.Linear(in_features=3, out_features=64),
-            nn.ReLU(),
-            nn.Linear(in_features=64, out_features=28 * 28),
+            nn.Linear(
+                in_features=3,
+                out_features=64,
+                bias=True,  # default
+            ),
+            nn.ReLU(
+                inplace=False,  # default
+            ),
+            nn.Linear(
+                in_features=64,
+                out_features=28 * 28,
+                bias=True,  # default
+            ),
         )
 
     def forward(self, x):
