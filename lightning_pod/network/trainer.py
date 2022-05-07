@@ -11,8 +11,6 @@ ModelCheckpoint: https://pytorch-lightning.readthedocs.io/en/latest/api/pytorch_
 """
 
 import os
-import torch
-from random import expovariate
 from pytorch_lightning import Trainer, seed_everything
 from pytorch_lightning.loggers import TensorBoardLogger
 from pytorch_lightning.profiler import SimpleProfiler
