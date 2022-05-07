@@ -139,6 +139,6 @@ lightning-pod.code-workspace
 data/cache/*
 
 # profiler, logger logs, and model checkpoints
-logs/*.txt
+logs/profiler/*.txt
 logs/lightning_logs/*
 models/*.ckpt
