@@ -8,6 +8,7 @@ Reproducibility: https://pytorch-lightning.readthedocs.io/en/latest/common/train
 TensorBoardLogger: https://pytorch-lightning.readthedocs.io/en/latest/api/pytorch_lightning.loggers.tensorboard.html#tensorboard
 SimpleProfiler: https://pytorch-lightning.readthedocs.io/en/latest/api/pytorch_lightning.profiler.SimpleProfiler.html#simpleprofiler
 ModelCheckpoint: https://pytorch-lightning.readthedocs.io/en/latest/api/pytorch_lightning.callbacks.ModelCheckpoint.html#modelcheckpoint
+: https://pytorch-lightning.readthedocs.io/en/latest/api/pytorch_lightning.strategies.DDPStrategy.html#ddpstrategy
 """
 
 import os
@@ -27,7 +28,7 @@ if __name__ == "__main__":
     logger = TensorBoardLogger(save_dir=logs_dir, name="lightning_logs")
     # SET PROFILER
     profile_dir = "".join([logs_dir, "/", "profiler"])
-    profiler = SimpleProfiler(dirpath=logs_dir, filename="profiler", extended=True)
+    profiler = SimpleProfiler(dirpath=profile_dir, filename="profiler", extended=True)
     # SET CHECKPOINT DIRECTORY
     chkpt_dir = "".join([cwd, "/", "models"])
     checkpoint_callback = ModelCheckpoint(dirpath=chkpt_dir, filename="model")
@@ -38,16 +39,19 @@ if __name__ == "__main__":
     #  GET DATALOADER
     train_loader, test_loader = get_data(return_loader=True, split=True, num_workers=5)
     #  SET MODEL
-    autoencoder = LitModel(Encoder(), Decoder())
+    model = LitModel(Encoder(), Decoder())
     # SET TRAINER
     trainer = Trainer(
         max_epochs=5,
         limit_train_batches=0.25,  # reduce training time of example
         enable_checkpointing=True,  # default
         deterministic=True,  # for reproducibility
+        # strategy="ddp",
+        accelerator="auto",
+        devices="auto",
         logger=logger,
         profiler=profiler,
         callbacks=callbacks,
     )
     # TRAIN MODEL https://pytorch-lightning.readthedocs.io/en/stable/common/trainer.html#fit
-    trainer.fit(model=autoencoder, train_dataloaders=train_loader)
+    trainer.fit(model=model, train_dataloaders=train_loader)
