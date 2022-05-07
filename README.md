@@ -46,7 +46,7 @@ The template environment includes tools to visualize data transformations with p
 > template files will be added to enable source code documentation using sphinx and autodoc for material-for-mkdocs
 
 ### Code coverage and security
-This template uses [deepsource](https://deepsource.io/) (account required) for coverage and GitHub's [CodeQL](https://github.com/github/codeql-action) for security.
+This template will use [codecov](https://about.codecov.io/) (account required) for coverage and GitHub's [CodeQL](https://github.com/github/codeql-action) for security.
 
 ### Installs
 
