@@ -60,5 +60,5 @@ if __name__ == "__main__":
     # PERSIST MODEL
     pretrained_dir = "".join([cwd, "/", "models", "/", "pre_trained"])
     modelpath = "".join([pretrained_dir, "/", "model.onnx"])
-    input_sample = torch.randn(1, 784)
+    input_sample = train_loader.dataset[0][0]
     model.to_onnx(modelpath, input_sample=input_sample, export_params=True)
