@@ -57,10 +57,10 @@ class LitModel(pl.LightningModule):
         a LightningModule fit to the training dataset.
     """
 
-    def __init__(self, encoder, decoder):
+    def __init__(self):
         super().__init__()
-        self.encoder = encoder
-        self.decoder = decoder
+        self.encoder = Encoder()
+        self.decoder = Decoder()
 
     def forward(self, x):
         x = x.view(x.size(0), -1)

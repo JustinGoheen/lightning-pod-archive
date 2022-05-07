@@ -17,7 +17,7 @@ from pytorch_lightning import Trainer, seed_everything
 from pytorch_lightning.loggers import TensorBoardLogger
 from pytorch_lightning.profiler import SimpleProfiler
 from pytorch_lightning.callbacks import ModelCheckpoint
-from lightning_pod.network.module import LitModel, Encoder, Decoder
+from lightning_pod.network.module import LitModel
 from lightning_pod.pipeline.data_loader import get_data
 
 
@@ -41,7 +41,7 @@ if __name__ == "__main__":
     #  GET DATALOADER
     train_loader, test_loader = get_data(return_loader=True, split=True, num_workers=5)
     #  SET MODEL
-    model = LitModel(Encoder(), Decoder())
+    model = LitModel()
     # SET TRAINER
     trainer = Trainer(
         max_epochs=5,
