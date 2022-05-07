@@ -11,12 +11,15 @@ ModelCheckpoint: https://pytorch-lightning.readthedocs.io/en/latest/api/pytorch_
 """
 
 import os
+import torch
+from random import expovariate
 from pytorch_lightning import Trainer, seed_everything
-from lightning_pod.network.module import LitModel, Encoder, Decoder
-from lightning_pod.pipeline.data_loader import get_data
 from pytorch_lightning.loggers import TensorBoardLogger
 from pytorch_lightning.profiler import SimpleProfiler
 from pytorch_lightning.callbacks import ModelCheckpoint
+from lightning_pod.network.module import LitModel, Encoder, Decoder
+from lightning_pod.pipeline.data_loader import get_data
+
 
 if __name__ == "__main__":
 
@@ -29,7 +32,7 @@ if __name__ == "__main__":
     profile_dir = "".join([logs_dir, "/", "profiler"])
     profiler = SimpleProfiler(dirpath=profile_dir, filename="profiler", extended=True)
     # SET CHECKPOINT DIRECTORY
-    chkpt_dir = "".join([cwd, "/", "models"])
+    chkpt_dir = "".join([cwd, "/", "models", "/", "checkpoints"])
     checkpoint_callback = ModelCheckpoint(dirpath=chkpt_dir, filename="model")
     # SET CALLBACKS
     callbacks = [checkpoint_callback]
@@ -42,10 +45,10 @@ if __name__ == "__main__":
     # SET TRAINER
     trainer = Trainer(
         max_epochs=5,
-        limit_train_batches=0.25,  # reduce training time of example
+        limit_train_batches=0.10,  # use only x% of training samples
         enable_checkpointing=True,  # default
         deterministic=True,  # for reproducibility
-        # strategy="ddp",
+        # strategy="ddp",  # set a strategy when training in Grid
         accelerator="auto",
         devices="auto",
         logger=logger,
@@ -54,3 +57,8 @@ if __name__ == "__main__":
     )
     # TRAIN MODEL https://pytorch-lightning.readthedocs.io/en/stable/common/trainer.html#fit
     trainer.fit(model=model, train_dataloaders=train_loader)
+    # PERSIST MODEL
+    pretrained_dir = "".join([cwd, "/", "models", "/", "pre_trained"])
+    modelpath = "".join([pretrained_dir, "/", "model.onnx"])
+    input_sample = torch.randn(1, 784)
+    model.to_onnx(modelpath, input_sample=input_sample, export_params=True)
