@@ -1,5 +1,9 @@
-# code example is from:
-# https://pytorch-lightning.readthedocs.io/en/latest/model/train_model_basic.html
+"""
+This example expands on basic exaples provided in PL docs. A key difference being that forward() is 
+implemented in the LightningModule in order to enable persisting the model with ONNX or torchscript.
+If forward() is not implemented, PyTorch will raise an NotImplementedError and the model will not be
+saved.
+"""
 
 import pytorch_lightning as pl
 import torch.nn.functional as F
@@ -57,6 +61,12 @@ class LitModel(pl.LightningModule):
         super().__init__()
         self.encoder = encoder
         self.decoder = decoder
+
+    def forward(self, x):
+        x = x.view(x.size(0), -1)
+        z = self.encoder(x)
+        output = self.decoder(z)
+        return output
 
     def training_step(self, batch, batch_idx):
         # training_step defines the train loop.
