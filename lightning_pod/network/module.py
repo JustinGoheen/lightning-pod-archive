@@ -17,12 +17,16 @@ class Encoder(nn.Module):
         None: no arguments are required at initialization.
 
     Returns:
-        an encoded rank 2 Tensor.
+        an encoded image.
     """
 
     def __init__(self):
         super().__init__()
-        self.l1 = nn.Sequential(nn.Linear(28 * 28, 64), nn.ReLU(), nn.Linear(64, 3))
+        self.l1 = nn.Sequential(
+            nn.Linear(in_features=28 * 28, out_features=64),
+            nn.ReLU(),
+            nn.Linear(in_features=64, out_features=3),
+        )
 
     def forward(self, x):
         return self.l1(x)
@@ -35,12 +39,16 @@ class Decoder(nn.Module):
         None: no arguments are required at initialization.
 
     Returns:
-        a decoded rank 2 Tensor.
+        a decoded image.
     """
 
     def __init__(self):
         super().__init__()
-        self.l1 = nn.Sequential(nn.Linear(3, 64), nn.ReLU(), nn.Linear(64, 28 * 28))
+        self.l1 = nn.Sequential(
+            nn.Linear(in_features=3, out_features=64),
+            nn.ReLU(),
+            nn.Linear(in_features=64, out_features=28 * 28),
+        )
 
     def forward(self, x):
         return self.l1(x)
