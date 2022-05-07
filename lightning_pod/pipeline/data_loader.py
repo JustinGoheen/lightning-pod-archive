@@ -24,12 +24,7 @@ def _split(dataset):
     return train, test
 
 
-def get_data(return_loader=True, split=True, num_workers=5):
-    rootpath = os.getcwd()
-    datapath = "".join([rootpath, "/", "data", "/", "cache"])
-    if not os.path.isdir(datapath):
-        os.mkdir(datapath)
-    dataset = _fetch_data(datapath)
+def _make_data(dataset, return_loader: bool, split: bool, num_workers: int):
     if not return_loader:
         if not split:
             return dataset
@@ -44,3 +39,13 @@ def get_data(return_loader=True, split=True, num_workers=5):
             train = DataLoader(train, num_workers=num_workers)
             test = DataLoader(test, num_workers=num_workers)
             return train, test
+
+
+def get_data(return_loader=True, split=True, num_workers=5):
+    rootpath = os.getcwd()
+    datapath = "".join([rootpath, "/", "data", "/", "cache"])
+    if not os.path.isdir(datapath):
+        os.mkdir(datapath)
+    dataset = _fetch_data(datapath)
+    dataset = _make_data(dataset, return_loader, split, num_workers)
+    return dataset
