@@ -23,4 +23,5 @@ dependencies:
       - torchaudio
       - torchtext
       - torchvision
+      - torch-tb-profiler
 prefix: /opt/homebrew/Caskroom/miniforge/base/envs/lightning

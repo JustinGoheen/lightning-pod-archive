@@ -11,6 +11,8 @@ torchaudio
 # LIGHTNING ECOSYSTEM
 lightning-bolts
 lightning-flash
+# VS CODE TENSORBOARD SUPPORT
+torch-tb-profiler
 # PLOTTING AND SYMBOLIC MATH
 plotly
 matplotlib
