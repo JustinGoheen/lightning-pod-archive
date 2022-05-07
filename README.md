@@ -100,6 +100,7 @@ pip install -e .
 and then run 
 
 ```sh
+{{ activate the venv or conda env }}
 python lightning_pod/network/trainer.py 
 ```
 
