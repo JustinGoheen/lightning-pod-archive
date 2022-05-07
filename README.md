@@ -8,7 +8,7 @@ A template environment and system architecture for [PyTorch Lightning](https://w
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/JustinGoheen/lightning-pod)
 
-Please note that Gitpod is to be used (if needed) during the initial development phases, and Grid [Sessions](https://docs.grid.ai/features/sessions) should be used to test on the desired machine type once the LightningModule and Trainer are functioning as intended on a [fast_dev_run](https://pytorch-lightning.readthedocs.io/en/stable/common/trainer.html#fast-dev-run) in Gitpod or locally. Once a model is out of development and is ready to be trained, a Grid [Run](https://docs.grid.ai/features/runs/README) should be used to train the model.
+Please note that Gitpod is to be used (if needed) during the initial development phases, and Grid [Sessions](https://docs.grid.ai/features/sessions) should be used to test on the desired machine type once the LightningModule and Trainer are functioning as intended in Gitpod or locally. Once a model is out of development and is ready to be trained, a Grid [Run](https://docs.grid.ai/features/runs/README) should be used to train the model.
 
 Refer to the [wiki](https://github.com/JustinGoheen/lightning-pod/wiki) for additional guides.
 
