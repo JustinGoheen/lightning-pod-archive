@@ -3,8 +3,10 @@ github:
     master: false
 
 tasks:
-  - init: pip3 install -r requirements.txt
-  - command: pip3 install -e .
+  - name: install dependencies
+    init: |
+      pip3 install - requirements.txt
+      pip3 install -e .
 
 vscode:
   extensions:
