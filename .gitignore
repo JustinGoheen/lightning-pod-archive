@@ -138,7 +138,9 @@ lightning-pod.code-workspace
 # data
 data/cache/*
 
-# profiler, logger logs, and model checkpoints
+# profiler, logger logs, model checkpoints, pre-trained models
 logs/profiler/*.txt
 logs/lightning_logs/version*
-models/*.ckpt
+models/checkpoints/*.ckpt
+models/pre_trained/*.pt
+models/pre_trained/*.onnx
