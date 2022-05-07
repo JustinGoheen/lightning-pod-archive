@@ -140,5 +140,5 @@ data/cache/*
 
 # profiler, logger logs, and model checkpoints
 logs/profiler/*.txt
-logs/lightning_logs/*
+logs/lightning_logs/version*
 models/*.ckpt
