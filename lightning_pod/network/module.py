@@ -96,7 +96,7 @@ class LitModel(pl.LightningModule):
         output = self.decoder(z)
         return output
 
-    def training_step(self, batch, batch_idx):
+    def training_step(self, batch):
         # training_step defines the train loop.
         x, y = batch
         x = x.view(x.size(0), -1)
