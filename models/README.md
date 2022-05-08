@@ -1,1 +1,1 @@
-store your pre-trained models in this directory
+store your production models in this directory

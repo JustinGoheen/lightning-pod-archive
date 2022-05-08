@@ -56,7 +56,7 @@ if __name__ == "__main__":
     # TRAIN MODEL https://pytorch-lightning.readthedocs.io/en/stable/common/trainer.html#fit
     trainer.fit(model=model, train_dataloaders=train_loader)
     # PERSIST MODEL
-    pretrained_dir = "".join([cwd, "/", "models", "/", "pre_trained"])
+    pretrained_dir = "".join([cwd, "/", "models", "/", "production"])
     modelpath = "".join([pretrained_dir, "/", "model.onnx"])
     input_sample = train_loader.dataset[0][0]
     model.to_onnx(modelpath, input_sample=input_sample, export_params=True)
