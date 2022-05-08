@@ -129,7 +129,7 @@ dmypy.json
 .pyre/
 
 # DS store
-.DS_store
+.DS_Store
 
 # VS Code
 lightning-pod.code-workspace
