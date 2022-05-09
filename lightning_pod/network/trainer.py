@@ -37,7 +37,7 @@ if __name__ == "__main__":
     # SET SEED
     seed_everything(42, workers=True)
     #  GET DATALOADER
-    train_loader, test_loader = get_data(return_loader=True, split=True, num_workers=5)
+    train_loader, test_loader = get_data(return_loader=True, split=True, num_workers=-1)
     #  SET MODEL
     model = LitModel()
     # SET TRAINER
