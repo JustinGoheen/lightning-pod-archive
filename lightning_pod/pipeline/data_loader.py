@@ -1,51 +1,98 @@
 import os
 from torch.utils.data import DataLoader, random_split
 from torchvision import transforms
-from torchvision.datasets import MNIST
+from torchvision.datasets import MNIST as torch_dataset
+
+"""
+use this file to retrieve the desired dataset from torchtext,
+torchaudio, torchvision, or lightning-bolts
+
+import the torch or lightning-bolts dataset as torch_dataset, as shown in
+the import statements above.
+
+then, if needed, add kwargs (key word arguments) for the dataset call in get_data(), in the
+call to _fetch_data.
+
+An example is below, where transform=transforms.ToTensor() is the kwarg:
+
+` dataset = _fetch_data(torch_dataset, datapath, transform=transforms.ToTensor())`
+"""
 
 
-def _download(datapath):
-    dataset = MNIST(datapath, download=True, transform=transforms.ToTensor())
+def _check_datacache_exists(datapath):
+    directory_does_not_exist = ~os.path.isdir(datapath)
+    if directory_does_not_exist:
+        os.mkdir(datapath)
+    return
+
+
+def _download_data(torch_dataset, datapath, **kwargs):
+    dataset = torch_dataset(
+        datapath,
+        download=True,
+        **kwargs,
+    )
     return dataset
 
 
-def _fetch_data(datapath):
-    if os.listdir(datapath):
-        dataset = MNIST(datapath, download=False, transform=transforms.ToTensor())
+def _fetch_data(torch_dataset, datapath, **kwargs):
+    directory_is_empty = os.listdir(datapath)
+    if directory_is_empty:
+        dataset = torch_dataset(
+            datapath,
+            download=False,
+            **kwargs,
+        )
     else:
-        dataset = _download(datapath)
+        dataset = _download_data(torch_dataset, datapath, **kwargs)
     return dataset
 
 
-def _split(dataset):
-    train_set_size = int(len(dataset) * 0.8)
+def _split_data(dataset, train_size: float):
+    train_set_size = int(len(dataset) * train_size)
     test_set_size = len(dataset) - train_set_size
     train, test = random_split(dataset, lengths=[train_set_size, test_set_size])
     return train, test
 
 
-def _make_data(dataset, return_loader: bool, split: bool, num_workers: int):
-    if not return_loader:
-        if not split:
-            return dataset
-        else:
-            train, test = _split(dataset)
-            return train, test
-    else:
-        if not split:
-            return DataLoader(dataset, num_workers=num_workers)
-        else:
-            train, test = _split(dataset)
+def _make_data(
+    dataset,
+    return_loader: bool,
+    split: bool,
+    num_workers: int,
+    train_size: float = 0.8,
+):
+    if return_loader:
+        if split:
+            train, test = _split_data(dataset)
             train = DataLoader(train, num_workers=num_workers)
             test = DataLoader(test, num_workers=num_workers)
-            return train, test
+            data = train, test
+        else:
+            data = DataLoader(dataset, num_workers=num_workers)
+    else:
+        if split:
+            data = _split_data(dataset, train_size)
+        else:
+            data = dataset
+    return data
 
 
-def get_data(return_loader=True, split=True, num_workers=5):
+def get_data(
+    return_loader: bool = True,
+    split: bool = True,
+    train_size: float = 0.8,
+    num_workers: int = -1,
+):
     rootpath = os.getcwd()
     datapath = "".join([rootpath, "/", "data", "/", "cache"])
-    if not os.path.isdir(datapath):
-        os.mkdir(datapath)
-    dataset = _fetch_data(datapath)
-    dataset = _make_data(dataset, return_loader, split, num_workers)
+    _check_datacache_exists(datapath)
+    dataset = _fetch_data(torch_dataset, datapath, transform=transforms.ToTensor())
+    dataset = _make_data(
+        dataset,
+        return_loader,
+        split,
+        num_workers,
+        train_size=train_size,
+    )
     return dataset
