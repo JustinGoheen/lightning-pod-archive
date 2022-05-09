@@ -1,5 +1,5 @@
 """
-This example expands on basic exaples provided in PL docs. A key difference being that forward() is 
+This example expands on basic examples provided in PL docs. A key difference being that forward() is 
 implemented in the LightningModule in order to enable persisting the model with ONNX or torchscript.
 If forward() is not implemented, PyTorch will raise an NotImplementedError and the model will not be
 saved.
@@ -75,14 +75,10 @@ class Decoder(nn.Module):
 
 
 class LitModel(pl.LightningModule):
-    """a custom PyTorch Lightning Module
+    """a custom PyTorch Lightning LightningModule
 
     Args:
-        encoder (nn.Module): an encoder layer.
-        decoder (nn.Module): a decoder layer.
-
-    Returns:
-        a LightningModule fit to the training dataset.
+        None: no arguments are required at initialization.
     """
 
     def __init__(self):
@@ -97,7 +93,6 @@ class LitModel(pl.LightningModule):
         return output
 
     def training_step(self, batch):
-        # training_step defines the train loop.
         x, y = batch
         x = x.view(x.size(0), -1)
         z = self.encoder(x)
