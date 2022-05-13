@@ -1,5 +1,5 @@
 import os
-from lightning_pod.pipeline.data_loader import get_data
+from lightning_pod.pipeline.dataloader import get_data
 
 if __name__ == "__main__":
 
