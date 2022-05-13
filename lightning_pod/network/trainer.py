@@ -24,20 +24,20 @@ if __name__ == "__main__":
     # GET CURRENT WORKING DIRECTORY
     cwd = os.getcwd()
     # SET LOGGER
-    logs_dir = "".join([cwd, "/", "logs"])
+    logs_dir = os.path.join(cwd, "logs")
     logger = TensorBoardLogger(logs_dir, name="lightning_logs")
     # SET PROFILER
-    profile_dir = "".join([logs_dir, "/", "profiler"])
+    profile_dir = os.path.join(logs_dir, "profiler")
     profiler = SimpleProfiler(dirpath=profile_dir, filename="profiler", extended=True)
     # SET CHECKPOINT DIRECTORY
-    chkpt_dir = "".join([cwd, "/", "models", "/", "checkpoints"])
+    chkpt_dir = os.path.join(cwd, "models", "checkpoints")
     checkpoint_callback = ModelCheckpoint(dirpath=chkpt_dir, filename="model")
     # SET CALLBACKS
     callbacks = [checkpoint_callback]
     # SET SEED
     seed_everything(42, workers=True)
     #  GET DATALOADER
-    train_loader, test_loader = get_data(return_loader=True, split=True, num_workers=-1)
+    train_loader, test_loader = get_data(return_loader=True, split=True, num_workers=0)
     #  SET MODEL
     model = LitModel()
     # SET TRAINER
@@ -56,7 +56,7 @@ if __name__ == "__main__":
     # TRAIN MODEL https://pytorch-lightning.readthedocs.io/en/stable/common/trainer.html#fit
     trainer.fit(model=model, train_dataloaders=train_loader)
     # PERSIST MODEL
-    pretrained_dir = "".join([cwd, "/", "models", "/", "production"])
-    modelpath = "".join([pretrained_dir, "/", "model.onnx"])
+    pretrained_dir = os.path.join(cwd, "models", "production")
+    modelpath = os.path.join(pretrained_dir, "model.onnx")
     input_sample = train_loader.dataset[0][0]
     model.to_onnx(modelpath, input_sample=input_sample, export_params=True)
