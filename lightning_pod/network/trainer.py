@@ -16,7 +16,7 @@ from pytorch_lightning.loggers import TensorBoardLogger
 from pytorch_lightning.profiler import SimpleProfiler
 from pytorch_lightning.callbacks import ModelCheckpoint
 from lightning_pod.network.module import LitModel
-from lightning_pod.pipeline.data_loader import get_data
+from lightning_pod.pipeline.dataloader import get_data
 
 
 if __name__ == "__main__":
