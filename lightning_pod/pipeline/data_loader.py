@@ -81,7 +81,7 @@ def get_data(
     return_loader: bool = True,
     split: bool = True,
     train_size: float = 0.8,
-    num_workers: int = -1,
+    num_workers: int = 0,
 ):
     rootpath = os.getcwd()
     datapath = os.path.join(rootpath, "data", "cache")
