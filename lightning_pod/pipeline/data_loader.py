@@ -20,8 +20,7 @@ An example is below, where transform=transforms.ToTensor() is the kwarg:
 
 
 def _check_datacache_exists(datapath):
-    directory_does_not_exist = ~os.path.isdir(datapath)
-    if directory_does_not_exist:
+    if not os.path.isdir(datapath):
         os.mkdir(datapath)
     return
 
@@ -64,7 +63,7 @@ def _make_data(
 ):
     if return_loader:
         if split:
-            train, test = _split_data(dataset)
+            train, test = _split_data(dataset, train_size)
             train = DataLoader(train, num_workers=num_workers)
             test = DataLoader(test, num_workers=num_workers)
             data = train, test
@@ -85,7 +84,7 @@ def get_data(
     num_workers: int = -1,
 ):
     rootpath = os.getcwd()
-    datapath = "".join([rootpath, "/", "data", "/", "cache"])
+    datapath = os.path.join(rootpath, "data", "cache")
     _check_datacache_exists(datapath)
     dataset = _fetch_data(torch_dataset, datapath, transform=transforms.ToTensor())
     dataset = _make_data(
