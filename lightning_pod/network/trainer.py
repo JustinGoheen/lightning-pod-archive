@@ -16,7 +16,7 @@ from pytorch_lightning.loggers import TensorBoardLogger
 from pytorch_lightning.profiler import SimpleProfiler
 from pytorch_lightning.callbacks import ModelCheckpoint
 from lightning_pod.network.module import LitModel
-from lightning_pod.pipeline.dataloader import get_data
+from lightning_pod.pipeline.datamodule import LitDataModule
 
 
 if __name__ == "__main__":
@@ -37,7 +37,7 @@ if __name__ == "__main__":
     # SET SEED
     seed_everything(42, workers=True)
     #  GET DATALOADER
-    train_loader, test_loader = get_data(return_loader=True, split=True, num_workers=0)
+    dataloader = LitDataModule()
     #  SET MODEL
     model = LitModel()
     # SET TRAINER
@@ -54,9 +54,9 @@ if __name__ == "__main__":
         callbacks=callbacks,
     )
     # TRAIN MODEL https://pytorch-lightning.readthedocs.io/en/stable/common/trainer.html#fit
-    trainer.fit(model=model, train_dataloaders=train_loader)
+    trainer.fit(model=model, train_dataloaders=dataloader)
     # PERSIST MODEL
     pretrained_dir = os.path.join(cwd, "models", "production")
     modelpath = os.path.join(pretrained_dir, "model.onnx")
-    input_sample = train_loader.dataset[0][0]
+    input_sample = dataloader.train_data.dataset[0][0]
     model.to_onnx(modelpath, input_sample=input_sample, export_params=True)
