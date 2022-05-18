@@ -8,6 +8,7 @@ def test_module_not_abstract():
 
 def test_setup():
     data_module = LitDataModule()
+    data_module.prepare_data()
     data_module.setup()
     data_keys = ["train_data", "test_data", "val_data"]
     assert all([key in dir(data_module) for key in data_keys])
