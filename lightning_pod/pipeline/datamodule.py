@@ -56,11 +56,11 @@ class LitDataModule(LightningDataModule):
     def val_dataloader(self):
         return DataLoader(self.val_data, num_workers=self.num_workers)
 
-    def _check_datadir_exists(self):
+    def _check_datadir_exists(self):  # pragma: no cover
         if not os.path.isdir(self.data_dir):
             os.mkdir(self.data_dir)
 
-    def _download_dataset(self):
+    def _download_dataset(self):  # pragma: no cover
         # train, val
         self.dataset(
             self.data_dir, train=True, download=True, transform=self.transforms
@@ -70,11 +70,11 @@ class LitDataModule(LightningDataModule):
             self.data_dir, train=False, download=True, transform=self.transforms
         )
 
-    def _fetch_dataset(self):
+    def _fetch_dataset(self):  # pragma: no cover
         self.dataset = self.dataset(
             self.data_dir, download=False, transform=self.transforms
         )
 
-    def _check_for_existing_data(self):
+    def _check_for_existing_data(self):  # pragma: no cover
         if not os.listdir(self.data_dir):
             self._download_dataset()
