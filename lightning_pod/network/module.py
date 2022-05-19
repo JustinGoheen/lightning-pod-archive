@@ -92,7 +92,7 @@ class LitModel(pl.LightningModule):
         output = self.decoder(z)
         return output
 
-    def training_step(self, batch, batch_idx):
+    def training_step(self, batch):
         x, y = batch
         x = x.view(x.size(0), -1)
         z = self.encoder(x)
@@ -101,13 +101,13 @@ class LitModel(pl.LightningModule):
         self.log("loss", loss)
         return loss
 
-    def test_step(self, batch, batch_idx):
-        self._shared_eval(batch, batch_idx, "test")
+    def test_step(self, batch):
+        self._shared_eval(batch, "test")
 
-    def val_step(self, batch, batch_idx):
-        self._shared_eval(batch, batch_idx, "val")
+    def val_step(self, batch):
+        self._shared_eval(batch, "val")
 
-    def _shared_eval(self, batch, batch_idx, prefix):
+    def _shared_eval(self, batch, prefix):
         x, y = batch
         x = x.view(x.size(0), -1)
         z = self.encoder(x)
