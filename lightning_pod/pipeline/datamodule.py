@@ -10,7 +10,6 @@ class LitDataModule(LightningDataModule):
         self,
         dataset: Dataset = MNIST,
         data_dir: str = "data/cache",
-        return_loader: bool = True,
         split: bool = True,
         train_size: float = 0.8,
         num_workers: int = 0,
