@@ -13,7 +13,7 @@ PODPATH = NETWORKPATH.parents[0]
 PROJECTPATH = NETWORKPATH.parents[1]
 
 
-@hydra.main(config_path=NETWORKPATH, config_name="config.yaml")
+@hydra.main(config_path=NETWORKPATH, config_name="hydra_config.yaml")
 def main(cfg):
     # SET LOGGER
     logs_dir = os.path.join(PROJECTPATH, "logs")
@@ -36,19 +36,19 @@ def main(cfg):
     model = LitModel()
     # SET TRAINER
     trainer = Trainer(
-        max_epochs=cfg.training.max_epochs,
-        limit_train_batches=cfg.training.limit_train_batches,
+        max_epochs=cfg.trainer.max_epochs,
+        limit_train_batches=cfg.trainer.limit_train_batches,
         limit_predict_batches=None,
         limit_test_batches=None,
         limit_val_batches=None,
-        accelerator=cfg.training.accelerator,
-        devices=cfg.training.devices,
-        deterministic=cfg.training.deterministic,
-        strategy=cfg.training.strategy,
-        precision=cfg.training.precision,
-        enable_model_summary=cfg.training.enable_model_summary,
-        enable_checkpointing=cfg.training.enable_checkpointing,
-        enable_progress_bar=cfg.training.enable_progress_bar,
+        accelerator=cfg.trainer.accelerator,
+        devices=cfg.trainer.devices,
+        deterministic=cfg.trainer.deterministic,
+        strategy=cfg.trainer.strategy,
+        precision=cfg.trainer.precision,
+        enable_model_summary=cfg.trainer.enable_model_summary,
+        enable_checkpointing=cfg.trainer.enable_checkpointing,
+        enable_progress_bar=cfg.trainer.enable_progress_bar,
         logger=logger,
         profiler=profiler,
         callbacks=callbacks,
