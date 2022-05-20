@@ -25,7 +25,6 @@ from lightning_pod.pipeline.datamodule import LitDataModule
 NETWORKPATH = Path(__file__).parent
 PODPATH = NETWORKPATH.parents[0]
 PROJECTPATH = NETWORKPATH.parents[1]
-CFGPATH = os.path.join(NETWORKPATH, "config.yml")
 
 
 @hydra.main(config_path=NETWORKPATH, config_name="config.yaml")
