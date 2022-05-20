@@ -16,7 +16,7 @@ import os
 from pytorch_lightning import Trainer, seed_everything
 from pytorch_lightning.loggers import TensorBoardLogger
 from pytorch_lightning.profiler import SimpleProfiler
-from pytorch_lightning.callbacks import ModelCheckpoint
+from pytorch_lightning.callbacks import ModelCheckpoint, EarlyStopping
 from lightning_pod.network.module import LitModel
 from lightning_pod.pipeline.datamodule import LitDataModule
 
@@ -31,11 +31,13 @@ if __name__ == "__main__":
     # SET PROFILER
     profile_dir = os.path.join(logs_dir, "profiler")
     profiler = SimpleProfiler(dirpath=profile_dir, filename="profiler", extended=True)
-    # SET CHECKPOINT DIRECTORY
+    # SET CHECKPOINT CALLBACK
     chkpt_dir = os.path.join(cwd, "models", "checkpoints")
     checkpoint_callback = ModelCheckpoint(dirpath=chkpt_dir, filename="model")
+    # SET EARLYSTOPPING CALLBACK
+    early_stopping = EarlyStopping(monitor="loss", mode="min")
     # SET CALLBACKS
-    callbacks = [checkpoint_callback]
+    callbacks = [checkpoint_callback, early_stopping]
     # SET SEED
     seed_everything(42, workers=True)
     #  GET DATALOADER
@@ -99,10 +101,8 @@ if __name__ == "__main__":
         multiple_trainloader_mode="max_size_cycle",
     )
     # TRAIN MODEL https://pytorch-lightning.readthedocs.io/en/stable/common/trainer.html#fit
-    # datamodule.setup(stage="fit")
     trainer.fit(model=model, datamodule=datamodule)
     # TEST MODEL
-    # datamodule.setup(stage="test")
     trainer.test(datamodule=datamodule)
     # PERSIST MODEL
     pretrained_dir = os.path.join(cwd, "models", "production")
