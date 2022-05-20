@@ -1,1 +1,0 @@
-The intent of this module is to house testing scripts for the model, and any custom, user defined functions such as objective (loss) functions or metrics which are not included in PyTorch Lightning or TorchMetrics.
