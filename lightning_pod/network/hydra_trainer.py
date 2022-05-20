@@ -1,17 +1,3 @@
-"""
-This module serves to consolidate basic use cases of PyTorch Lightning and to test
-functionality of this template using an encoder-decoder on MNIST. Documentation and soruce
-code links are provided below.
-
-example code: https://pytorch-lightning.readthedocs.io/en/latest/model/train_model_basic.html
-Trainer: https://pytorch-lightning.readthedocs.io/en/latest/common/trainer.html
-Trainer source code: https://github.com/PyTorchLightning/pytorch-lightning/blob/eb21135b2aad20aaad45aae44858c090f1e780e5/pytorch_lightning/trainer/trainer.py#L126
-Reproducibility: https://pytorch-lightning.readthedocs.io/en/latest/common/trainer.html#reproducibility
-TensorBoardLogger: https://pytorch-lightning.readthedocs.io/en/latest/api/pytorch_lightning.loggers.tensorboard.html#tensorboard
-SimpleProfiler: https://pytorch-lightning.readthedocs.io/en/latest/api/pytorch_lightning.profiler.SimpleProfiler.html#simpleprofiler
-ModelCheckpoint: https://pytorch-lightning.readthedocs.io/en/latest/api/pytorch_lightning.callbacks.ModelCheckpoint.html#modelcheckpoint
-"""
-
 import os
 import hydra
 from pathlib import Path
@@ -29,7 +15,6 @@ PROJECTPATH = NETWORKPATH.parents[1]
 
 @hydra.main(config_path=NETWORKPATH, config_name="config.yaml")
 def main(cfg):
-    # GET CURRENT WORKING DIRECTORY
     # SET LOGGER
     logs_dir = os.path.join(PROJECTPATH, "logs")
     logger = TensorBoardLogger(logs_dir, name="lightning_logs")
@@ -52,13 +37,13 @@ def main(cfg):
     # SET TRAINER
     trainer = Trainer(
         max_epochs=cfg.training.max_epochs,
-        limit_train_batches=cfg.training.limit_train_batches,  # use only x% of training samples
+        limit_train_batches=cfg.training.limit_train_batches,
         limit_predict_batches=None,
         limit_test_batches=None,
         limit_val_batches=None,
         accelerator=cfg.training.accelerator,
         devices=cfg.training.devices,
-        deterministic=cfg.training.deterministic,  # for reproducibility
+        deterministic=cfg.training.deterministic,
         strategy=cfg.training.strategy,
         precision=cfg.training.precision,
         enable_model_summary=cfg.training.enable_model_summary,
@@ -67,7 +52,7 @@ def main(cfg):
         logger=logger,
         profiler=profiler,
         callbacks=callbacks,
-        plugins=None,  # defaults flags
+        plugins=None,
         default_root_dir=None,
         gradient_clip_val=None,
         gradient_clip_algorithm=None,
@@ -100,12 +85,12 @@ def main(cfg):
         replace_sampler_ddp=True,
         detect_anomaly=False,
         auto_scale_batch_size=False,
-        amp_backend="negative",  # amp is "automatic mixed precision"
+        amp_backend="negative",
         amp_level=None,
         move_metrics_to_cpu=False,
         multiple_trainloader_mode="max_size_cycle",
     )
-    # TRAIN MODEL https://pytorch-lightning.readthedocs.io/en/stable/common/trainer.html#fit
+    # TRAIN MODEL
     trainer.fit(model=model, datamodule=datamodule)
     # TEST MODEL
     trainer.test(datamodule=datamodule)
