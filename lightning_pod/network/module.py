@@ -85,6 +85,7 @@ class LitModel(pl.LightningModule):
         super().__init__()
         self.encoder = Encoder()
         self.decoder = Decoder()
+        self.save_hyperparameters()
 
     def forward(self, x):
         x = x.view(x.size(0), -1)
@@ -101,10 +102,10 @@ class LitModel(pl.LightningModule):
         self.log("loss", loss)
         return loss
 
-    def test_step(self, batch):
+    def test_step(self, batch, *args):
         self._shared_eval(batch, "test")
 
-    def val_step(self, batch):
+    def val_step(self, batch, *args):
         self._shared_eval(batch, "val")
 
     def _shared_eval(self, batch, prefix):
