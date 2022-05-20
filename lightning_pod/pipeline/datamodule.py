@@ -1,15 +1,21 @@
 import os
+from pathlib import Path
 from pytorch_lightning import LightningDataModule
 from torch.utils.data import Dataset, DataLoader, random_split
 from torchvision.datasets import MNIST
 from torchvision import transforms
+
+NETWORKPATH = Path(__file__).parent
+PODPATH = NETWORKPATH.parents[0]
+PROJECTPATH = NETWORKPATH.parents[1]
+DATAPATH = os.path.join(PROJECTPATH, "data", "cache")
 
 
 class LitDataModule(LightningDataModule):
     def __init__(
         self,
         dataset: Dataset = MNIST,
-        data_dir: str = "data/cache",
+        data_dir: str = DATAPATH,
         split: bool = True,
         train_size: float = 0.8,
         num_workers: int = 0,
