@@ -3,6 +3,10 @@ This module serves to consolidate basic use cases of PyTorch Lightning and to te
 functionality of this template using an encoder-decoder on MNIST. Documentation and soruce
 code links are provided below.
 
+The trainer is "static" in the sense that the settings are hardcoded, which may be a more
+familiar way for beginners before creating a trainer that interfaces with argparse (employing a trainer from CLI) or 
+hydra (employing a trainer from a config.yml file).
+
 example code: https://pytorch-lightning.readthedocs.io/en/latest/model/train_model_basic.html
 Trainer: https://pytorch-lightning.readthedocs.io/en/latest/common/trainer.html
 Trainer source code: https://github.com/PyTorchLightning/pytorch-lightning/blob/eb21135b2aad20aaad45aae44858c090f1e780e5/pytorch_lightning/trainer/trainer.py#L126
@@ -13,6 +17,7 @@ ModelCheckpoint: https://pytorch-lightning.readthedocs.io/en/latest/api/pytorch_
 """
 
 import os
+from pathlib import Path
 from pytorch_lightning import Trainer, seed_everything
 from pytorch_lightning.loggers import TensorBoardLogger
 from pytorch_lightning.profiler import SimpleProfiler
@@ -23,16 +28,18 @@ from lightning_pod.pipeline.datamodule import LitDataModule
 
 if __name__ == "__main__":
 
-    # GET CURRENT WORKING DIRECTORY
-    cwd = os.getcwd()
+    # SET PATHS
+    NETWORKPATH = Path(__file__).parent
+    PODPATH = NETWORKPATH.parents[0]
+    PROJECTPATH = NETWORKPATH.parents[1]
     # SET LOGGER
-    logs_dir = os.path.join(cwd, "logs")
+    logs_dir = os.path.join(PROJECTPATH, "logs")
     logger = TensorBoardLogger(logs_dir, name="lightning_logs")
     # SET PROFILER
     profile_dir = os.path.join(logs_dir, "profiler")
     profiler = SimpleProfiler(dirpath=profile_dir, filename="profiler", extended=True)
     # SET CHECKPOINT CALLBACK
-    chkpt_dir = os.path.join(cwd, "models", "checkpoints")
+    chkpt_dir = os.path.join(PROJECTPATH, "models", "checkpoints")
     checkpoint_callback = ModelCheckpoint(dirpath=chkpt_dir, filename="model")
     # SET EARLYSTOPPING CALLBACK
     early_stopping = EarlyStopping(monitor="loss", mode="min")
@@ -105,7 +112,7 @@ if __name__ == "__main__":
     # TEST MODEL
     trainer.test(datamodule=datamodule)
     # PERSIST MODEL
-    pretrained_dir = os.path.join(cwd, "models", "production")
+    pretrained_dir = os.path.join(PROJECTPATH, "models", "production")
     modelpath = os.path.join(pretrained_dir, "model.onnx")
     input_sample = datamodule.train_data.dataset[0][0]
     model.to_onnx(modelpath, input_sample=input_sample, export_params=True)
