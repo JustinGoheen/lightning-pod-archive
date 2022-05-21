@@ -50,7 +50,5 @@
         "git": "latest",
         "git-lfs": "latest"
     },
-    "postCreateCommand": [
-        "pip3 install -e ."
-    ]
+    "postCreateCommand": "pip3 install -e ."
 }
