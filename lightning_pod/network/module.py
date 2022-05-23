@@ -105,7 +105,7 @@ class LitModel(pl.LightningModule):
     def test_step(self, batch, *args):
         self._shared_eval(batch, "test")
 
-    def val_step(self, batch, *args):
+    def validation_step(self, batch, *args):
         self._shared_eval(batch, "val")
 
     def _shared_eval(self, batch, prefix):
