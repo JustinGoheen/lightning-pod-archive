@@ -13,6 +13,8 @@ A template environment and system architecture for [PyTorch Lightning](https://w
 
 Refer to the [wiki](https://github.com/JustinGoheen/lightning-pod/wiki) for additional information and guides.
 
+[![Open in Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new?repo=JustinGoheen/lightning-pod)
+
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/JustinGoheen/lightning-pod)
 
 </div>
