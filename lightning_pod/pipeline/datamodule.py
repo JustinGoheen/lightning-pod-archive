@@ -1,4 +1,5 @@
 import os
+import multiprocessing
 from pathlib import Path
 from pytorch_lightning import LightningDataModule
 from torch.utils.data import Dataset, DataLoader, random_split
@@ -9,6 +10,7 @@ NETWORKPATH = Path(__file__).parent
 PODPATH = NETWORKPATH.parents[0]
 PROJECTPATH = NETWORKPATH.parents[1]
 DATAPATH = os.path.join(PROJECTPATH, "data", "cache")
+NUMWORKERS = int(multiprocessing.cpu_count() // 2)
 
 
 class LitDataModule(LightningDataModule):
@@ -18,7 +20,7 @@ class LitDataModule(LightningDataModule):
         data_dir: str = DATAPATH,
         split: bool = True,
         train_size: float = 0.8,
-        num_workers: int = 0,
+        num_workers: int = NUMWORKERS,
         transforms=transforms.ToTensor(),
     ):
         super().__init__()

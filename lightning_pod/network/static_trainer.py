@@ -110,7 +110,7 @@ if __name__ == "__main__":
     # TRAIN MODEL https://pytorch-lightning.readthedocs.io/en/stable/common/trainer.html#fit
     trainer.fit(model=model, datamodule=datamodule)
     # TEST MODEL
-    trainer.test(datamodule=datamodule)
+    trainer.test(ckpt_path="best", datamodule=datamodule)
     # PERSIST MODEL
     pretrained_dir = os.path.join(PROJECTPATH, "models", "production")
     modelpath = os.path.join(pretrained_dir, "model.onnx")

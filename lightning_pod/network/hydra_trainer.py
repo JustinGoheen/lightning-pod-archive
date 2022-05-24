@@ -93,7 +93,7 @@ def main(cfg):
     # TRAIN MODEL
     trainer.fit(model=model, datamodule=datamodule)
     # TEST MODEL
-    trainer.test(datamodule=datamodule)
+    trainer.test(ckpt_path="best", datamodule=datamodule)
     # PERSIST MODEL
     pretrained_dir = os.path.join(PROJECTPATH, "models", "production")
     modelpath = os.path.join(pretrained_dir, "model.onnx")
