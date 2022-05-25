@@ -10,7 +10,7 @@ setup(
     license="Apache 2.0",
     install_requires=[],
     author_email="",
-    packages=find_packages(exclude=["tests", "dash"]),
+    packages=find_packages(),
     zip_safe=False,
     classifiers=[
         "Programming Language :: Python :: 3.10",
