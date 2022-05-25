@@ -2,12 +2,12 @@
 import os
 import dash
 import dash_bootstrap_components as dbc
-import plotly.graph_objects as go
+import plotly.graph_objects as go  # leave for additional plotting components
 import plotly.express as px
 from pathlib import Path
 from dash import html
 from dash import dcc
-from dash.dependencies import Input, Output
+from dash.dependencies import Input, Output  # leave for callbacks
 from torchmetrics import Precision, Recall, F1Score, Accuracy
 from lightning_pod.network.module import LitModel
 from lightning_pod.pipeline.datamodule import LitDataModule
@@ -27,44 +27,38 @@ server = app.server
 
 
 def scores_report(y_true, y_predict):
-
     scores = {
         "Precision": Precision(y_true, y_predict),
         "Recall": Recall(y_true, y_predict),
         "F1": F1Score(y_true, y_predict),
         "Accuracy": Accuracy(y_true, y_predict),
     }
-
     return scores
 
 
 def make_model():
-
     model = LitModel()
-
     return
 
 
-def leftside_figure():
-
-    # ground truth
-    dataset = LitDataModule().dataset
-    dataset = dataset(DATAPATH, download=False, transform=transforms.ToTensor())
+def leftside_figure(dataset):
+    """creates the ground truth image"""
     fig = px.imshow(dataset[0][0].view(28, 28))
     fig.update_layout(title=dict(text="Ground Truth"))
-
     return fig
 
 
-def rightside_figure():
-
-    # prediction
-    dataset = LitDataModule().dataset
-    dataset = dataset(DATAPATH, download=False, transform=transforms.ToTensor())
-    fig = px.imshow(dataset[1][0].view(28, 28))
+def rightside_figure(dataset):
+    """creates the decoded image"""
+    fig = px.imshow(dataset[0][0].view(28, 28))
     fig.update_layout(title=dict(text="Decoded"))
-
     return fig
+
+
+#### CREATE DATA ####
+
+dataset = LitDataModule().dataset
+dataset = dataset(DATAPATH, download=False, transform=transforms.ToTensor())
 
 
 #### APP LAYOUT ####
@@ -80,7 +74,7 @@ NAVBAR = dbc.NavbarSimple(
 MODEL_CARD = dbc.Card(
     dbc.CardBody(
         [
-            html.P(f"Model: LitModel", id="model_name", className="card-text"),
+            html.H4(f"Model Card", id="model_name", className="card-text"),
             html.P(
                 f"Some Model Info: {0}",
                 id="modelcard_1",
@@ -111,13 +105,13 @@ MODEL_CARD = dbc.Card(
 )
 
 SIDEBAR = dbc.Col(
-    [html.H4("Model Card"), MODEL_CARD],
+    [MODEL_CARD],
     width=3,
 )
 
 GROUNDTRUTH = dcc.Graph(
     id="leftside_figure",
-    figure=leftside_figure(),
+    figure=leftside_figure(dataset),
     config={
         "responsive": True,  # dynamically resizes Graph with browser winder
         "displayModeBar": True,  # always show the Graph tools
@@ -127,7 +121,7 @@ GROUNDTRUTH = dcc.Graph(
 
 PREDICTIONS = dcc.Graph(
     id="rightside_figure",
-    figure=rightside_figure(),
+    figure=rightside_figure(dataset),
     config={
         "responsive": True,  # dynamically resizes Graph with browser winder
         "displayModeBar": True,  # always show the Graph tools
