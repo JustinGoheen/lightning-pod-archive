@@ -1,19 +1,16 @@
 # market classification app
-from email.headerregistry import Group
 import os
-from turtle import width
 import dash
 import dash_bootstrap_components as dbc
 import plotly.graph_objects as go
 import plotly.express as px
-import numpy as np
+from pathlib import Path
 from dash import html
 from dash import dcc
 from dash.dependencies import Input, Output
 from torchmetrics import Precision, Recall, F1Score, Accuracy
 from lightning_pod.network.module import LitModel
 from lightning_pod.pipeline.datamodule import LitDataModule
-from pathlib import Path
 from torchvision import transforms
 
 
@@ -54,16 +51,18 @@ def leftside_figure():
     dataset = LitDataModule().dataset
     dataset = dataset(DATAPATH, download=False, transform=transforms.ToTensor())
     fig = px.imshow(dataset[0][0].view(28, 28))
+    fig.update_layout(title=dict(text="Ground Truth"))
 
     return fig
 
 
 def rightside_figure():
 
-    # ground truth
+    # prediction
     dataset = LitDataModule().dataset
     dataset = dataset(DATAPATH, download=False, transform=transforms.ToTensor())
     fig = px.imshow(dataset[1][0].view(28, 28))
+    fig.update_layout(title=dict(text="Decoded"))
 
     return fig
 
