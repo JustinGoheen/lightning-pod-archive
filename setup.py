@@ -4,10 +4,10 @@ from setuptools import find_packages
 setup(
     name="lightning-pod",
     version="0.0.1",
-    description="A robust PyTorch Lightning research environment",
+    description="A template for PyTorch Lightning and Grid projects ",
     url="https://github.com/JustinGoheen/lightning-pod",
     author="Justin Goheen",
-    license="MIT",
+    license="Apache 2.0",
     install_requires=[],
     author_email="",
     packages=find_packages(),
