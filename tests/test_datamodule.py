@@ -20,7 +20,7 @@ def test_setup():
     data_module.prepare_data()
     data_module.setup()
     data_keys = ["train_data", "test_data", "val_data"]
-    assert all([key in dir(data_module) for key in data_keys])
+    assert all(key in dir(data_module) for key in data_keys)
 
 
 def test_trainloader():
