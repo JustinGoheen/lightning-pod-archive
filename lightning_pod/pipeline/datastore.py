@@ -1,10 +1,14 @@
 import os
-from lightning_pod.pipeline.dataloader import get_data
+from pathlib import Path
+from lightning_pod.pipeline.datamodule import LitDataModule
+
 
 if __name__ == "__main__":
 
-    rootpath = os.getcwd()
-    datapath = os.path.join(rootpath, "data", "cache")
-    dataset = get_data(return_loader=False)
-    storename = dataset.__class__.__name__
-    os.system(f"grid datastore create {datapath} --name {storename}")
+    network_path = Path(__file__).parent
+    project_path = network_path.parents[1]
+    data_path = os.path.join(project_path, "data", "cache")
+    datamodule = LitDataModule()
+    dataset = datamodule.dataset
+    storename = dataset.__name__
+    os.system(f"grid datastore create {data_path} --name {storename}")
