@@ -27,3 +27,7 @@ mypy
 coverage
 # TQDM SUPPORT IN NOTEBOOKS
 ipywidgets
+# PLOTLY DASH APPS
+dash
+dash-bootstrap-components
+gunicorn

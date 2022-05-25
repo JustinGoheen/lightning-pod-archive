@@ -25,4 +25,7 @@ dependencies:
       - torchtext
       - torchvision
       - torch-tb-profiler
+      - dash
+      - dash-bootstrap-components
+      - gunicorn
 prefix: /opt/homebrew/Caskroom/miniforge/base/envs/lightning
