@@ -31,3 +31,5 @@ ipywidgets
 dash
 dash-bootstrap-components
 gunicorn
+# PIN PROTOBUF TO 3.20 TO AVOID 4.12 ERRORS IN CI/CD
+protobuf==3.20.1
