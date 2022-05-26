@@ -1,6 +1,6 @@
 name: lightning-pod
 channels:
-  - conda-forge
+  - defaults
 dependencies:
   - python=3.9.12
   - pip
@@ -28,4 +28,3 @@ dependencies:
       - dash
       - dash-bootstrap-components
       - gunicorn
-prefix: /opt/homebrew/Caskroom/miniforge/base/envs/lightning
