@@ -31,8 +31,8 @@ class LitDataModule(LightningDataModule):
         self.num_workers = num_workers
         self.transforms = transforms
 
-    # def prepare_data(self):
-    #     pass
+    def prepare_data(self):
+        self.dataset(self.data_dir, download=True)
 
     def setup(self, stage=None):
         if stage == "fit" or stage is None:
