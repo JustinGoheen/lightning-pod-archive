@@ -14,7 +14,6 @@ from lightning_pod.pipeline.datamodule import LitDataModule
 from torchvision import transforms
 
 
-NETWORKPATH = Path(__file__)
 DATAPATH = os.path.join("data", "cache")
 
 
@@ -66,7 +65,7 @@ NAVBAR = dbc.NavbarSimple(
     brand="PyTorch Lightning MNIST Encoder-Decoder",
     color="#792ee5",
     dark=True,
-    sticky="top",
+    fluid=True,
 )
 
 
