@@ -16,7 +16,7 @@ from torchvision import transforms
 
 NETWORKPATH = Path(__file__).parent
 PROJECTPATH = NETWORKPATH.parents[0]
-DATAPATH = os.path.join(PROJECTPATH, "data", "cache")
+DATAPATH = os.path.join("data", "cache")
 
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
@@ -190,12 +190,11 @@ MAIN_AREA = dbc.Col(
         dbc.Row(
             [
                 dbc.Col([GROUNDTRUTH], className="pretty_container", width=5),
-                dbc.Col(width=1),
                 dbc.Col([PREDICTIONS], className="pretty_container", width=5),
-            ]
+            ],
+            justify="center",
         ),
-    ],
-    width=9,
+    ]
 )
 
 BODY = dbc.Container([dbc.Row([SIDEBAR, MAIN_AREA])], fluid=True)
