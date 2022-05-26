@@ -56,7 +56,7 @@ def rightside_figure(dataset):
 #### CREATE DATA ####
 
 dataset = LitDataModule().dataset
-dataset = dataset(DATAPATH, transform=transforms.ToTensor())
+dataset = dataset(DATAPATH, download=True, transform=transforms.ToTensor())
 
 
 #### APP LAYOUT ####
