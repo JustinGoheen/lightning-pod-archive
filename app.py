@@ -4,14 +4,13 @@ import dash
 import dash_bootstrap_components as dbc
 import plotly.graph_objects as go  # leave for additional plotting components
 import plotly.express as px
-from pathlib import Path
 from dash import html
 from dash import dcc
 from dash.dependencies import Input, Output  # leave for callbacks
 from torchmetrics import Precision, Recall, F1Score, Accuracy
+from torchvision import transforms
 from lightning_pod.network.module import LitModel
 from lightning_pod.pipeline.datamodule import LitDataModule
-from torchvision import transforms
 
 
 DATAPATH = os.path.join("data", "cache")
