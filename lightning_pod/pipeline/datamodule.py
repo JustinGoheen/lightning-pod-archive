@@ -31,9 +31,8 @@ class LitDataModule(LightningDataModule):
         self.num_workers = num_workers
         self.transforms = transforms
 
-    def prepare_data(self):
-        self._check_datadir_exists()
-        self._check_for_existing_data()
+    # def prepare_data(self):
+    #     pass
 
     def setup(self, stage=None):
         if stage == "fit" or stage is None:
@@ -61,26 +60,3 @@ class LitDataModule(LightningDataModule):
 
     def val_dataloader(self):
         return DataLoader(self.val_data, num_workers=self.num_workers)
-
-    def _check_datadir_exists(self):  # pragma: no cover
-        if not os.path.isdir(self.data_dir):
-            os.mkdir(self.data_dir)
-
-    def _download_dataset(self):  # pragma: no cover
-        # train, val
-        self.dataset(
-            self.data_dir, train=True, download=True, transform=self.transforms
-        )
-        # test
-        self.dataset(
-            self.data_dir, train=False, download=True, transform=self.transforms
-        )
-
-    def _fetch_dataset(self):  # pragma: no cover
-        self.dataset = self.dataset(
-            self.data_dir, download=False, transform=self.transforms
-        )
-
-    def _check_for_existing_data(self):  # pragma: no cover
-        if not os.listdir(self.data_dir):
-            self._download_dataset()
