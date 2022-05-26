@@ -14,8 +14,7 @@ from lightning_pod.pipeline.datamodule import LitDataModule
 from torchvision import transforms
 
 
-NETWORKPATH = Path(__file__).parent
-PROJECTPATH = NETWORKPATH.parents[0]
+NETWORKPATH = Path(__file__)
 DATAPATH = os.path.join("data", "cache")
 
 
@@ -58,7 +57,7 @@ def rightside_figure(dataset):
 #### CREATE DATA ####
 
 dataset = LitDataModule().dataset
-dataset = dataset(DATAPATH, download=False, transform=transforms.ToTensor())
+dataset = dataset(DATAPATH, transform=transforms.ToTensor())
 
 
 #### APP LAYOUT ####
