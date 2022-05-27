@@ -3,28 +3,27 @@ import multiprocessing
 from pathlib import Path
 from pytorch_lightning import LightningDataModule
 from torch.utils.data import Dataset, DataLoader, random_split
-from torchvision.datasets import MNIST
 from torchvision import transforms
+from lightning_pod.pipeline.dataset import LitDataSet
 
 NETWORKPATH = Path(__file__).parent
 PODPATH = NETWORKPATH.parents[0]
 PROJECTPATH = NETWORKPATH.parents[1]
-DATAPATH = os.path.join(PROJECTPATH, "data", "cache")
 NUMWORKERS = int(multiprocessing.cpu_count() // 2)
 
 
 class LitDataModule(LightningDataModule):
     def __init__(
         self,
-        dataset: Dataset = MNIST,
-        data_dir: str = DATAPATH,
+        dataset: Dataset = LitDataSet,
+        data_dir: str = "data",
         split: bool = True,
         train_size: float = 0.8,
         num_workers: int = NUMWORKERS,
         transforms=transforms.ToTensor(),
     ):
         super().__init__()
-        self.data_dir = data_dir
+        self.data_dir = os.path.join(PROJECTPATH, data_dir, "cache")
         self.dataset = dataset
         self.split = split
         self.train_size = train_size
