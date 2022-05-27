@@ -13,13 +13,6 @@ jobs:
       - name: Build HTML
         uses: ammaraskar/sphinx-action@0.4
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: html-docs
-          path: docs/build/html/
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        if: github.ref == 'refs/heads/main'
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: docs/build/html
+        uses: actions/upload-artifact@v3.1.0
+      - name: GitHub Push
+        uses: ad-m/github-push-action@v0.6.0
