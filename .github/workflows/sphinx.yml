@@ -13,7 +13,7 @@ jobs:
       - name: Build HTML
         uses: ammaraskar/sphinx-action@0.4
         with:
-          docs-folders: "docs/"
+          docs-folder: "docs/"
           build-command: "sphinx-apidoc -f -o docs/source lightning_pod/"
       - name: Upload artifacts
         uses: actions/upload-artifact@v1
