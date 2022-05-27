@@ -1,20 +1,19 @@
 name: Sphinx build
 
-on: push
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Set up Python 3.9
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.9
       - uses: actions/checkout@v2
       - name: Build HTML
         uses: ammaraskar/sphinx-action@0.4
       - name: Upload artifacts
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
           name: html-docs
           path: docs/build/html/
