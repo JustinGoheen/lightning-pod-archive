@@ -28,4 +28,9 @@ dependencies:
       - dash
       - dash-bootstrap-components
       - gunicorn
+      - sphinx
+      - myst-parser
+      - sphinx_rtd_theme
+      - pydata-sphinx-theme
+      - pt-lightning-sphinx-theme @ https://github.com/PyTorchLightning/lightning_sphinx_theme/archive/master.zip
       - protobuf==3.20.1
