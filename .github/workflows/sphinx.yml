@@ -10,8 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Build HTML
-        uses: ammaraskar/sphinx-action@0.4
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - run: bash docs/build_docs.sh
       - name: Upload artifacts
         uses: actions/upload-artifact@v3.1.0
       - name: GitHub Push
