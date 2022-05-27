@@ -12,10 +12,10 @@ lightning\_pod.pipeline.datamodule module
    :undoc-members:
    :show-inheritance:
 
-lightning\_pod.pipeline.datastore module
-----------------------------------------
+lightning\_pod.pipeline.dataset module
+--------------------------------------
 
-.. automodule:: lightning_pod.pipeline.datastore
+.. automodule:: lightning_pod.pipeline.dataset
    :members:
    :undoc-members:
    :show-inheritance:

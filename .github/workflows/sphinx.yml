@@ -12,6 +12,9 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build HTML
         uses: ammaraskar/sphinx-action@0.4
+        with:
+          docs-folders: "docs/"
+          build-command: "sphinx-apidoc -f -o docs/source lightning_pod/"
       - name: Upload artifacts
         uses: actions/upload-artifact@v1
         with:
