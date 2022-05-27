@@ -6,6 +6,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
       - uses: actions/checkout@v2
       - name: Build HTML
         uses: ammaraskar/sphinx-action@0.4
