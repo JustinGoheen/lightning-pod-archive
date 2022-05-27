@@ -13,8 +13,7 @@
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
-
-import pt_lightning_sphinx_theme
+# import pt_lightning_sphinx_theme
 
 
 # -- Project information -----------------------------------------------------
@@ -29,12 +28,7 @@ author = "Justin Goheen"
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = [
-    "sphinx.ext.autodoc",
-    "sphinx.ext.napoleon",
-    "myst_parser",
-    "sphinx.ext.githubpages",
-]
+extensions = ["sphinx.ext.autodoc", "sphinx.ext.napoleon", "myst_parser"]
 
 # Napoleon settings
 napoleon_google_docstring = True
