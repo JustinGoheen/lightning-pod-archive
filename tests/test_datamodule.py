@@ -1,5 +1,6 @@
 import os
 import torch
+from pathlib import Path
 from lightning_pod.pipeline.datamodule import LitDataModule
 
 
@@ -10,9 +11,10 @@ def test_module_not_abstract():
 def test_prepare_data():
     data_module = LitDataModule()
     data_module.prepare_data()
-    rootdir = os.getcwd()
-    datapath = os.path.join(rootdir, "data", "cache")
-    assert "MNIST" in os.listdir(datapath)
+    networkpath = Path(__file__).parent
+    projectpath = networkpath.parents[0]
+    datapath = os.path.join(projectpath, "data", "cache")
+    assert "LitDataset" in os.listdir(datapath)
 
 
 def test_setup():

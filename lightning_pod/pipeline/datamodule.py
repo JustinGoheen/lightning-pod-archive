@@ -4,7 +4,7 @@ from pathlib import Path
 from pytorch_lightning import LightningDataModule
 from torch.utils.data import Dataset, DataLoader, random_split
 from torchvision import transforms
-from lightning_pod.pipeline.dataset import LitDataSet
+from lightning_pod.pipeline.dataset import LitDataset
 
 NETWORKPATH = Path(__file__).parent
 PODPATH = NETWORKPATH.parents[0]
@@ -15,7 +15,7 @@ NUMWORKERS = int(multiprocessing.cpu_count() // 2)
 class LitDataModule(LightningDataModule):
     def __init__(
         self,
-        dataset: Dataset = LitDataSet,
+        dataset: Dataset = LitDataset,
         data_dir: str = "data",
         split: bool = True,
         train_size: float = 0.8,
