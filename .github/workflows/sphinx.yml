@@ -17,6 +17,7 @@ jobs:
       - name: Build HTML
         run: |
           sphinx-apidoc -f -o docs/source lightning_pod/
+          make clean
           cd docs
           make html
       - name: Upload artifacts
@@ -28,4 +29,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
         with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: docs/build/html
