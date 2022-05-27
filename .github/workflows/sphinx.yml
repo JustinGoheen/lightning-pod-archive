@@ -12,7 +12,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build HTML
         run: |
-          make clean
           cd docs
           make html
       - name: Upload artifacts
