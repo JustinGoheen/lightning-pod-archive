@@ -33,6 +33,7 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.napoleon",
     "myst_parser",
+    "sphinx.ext.githubpages",
 ]
 
 # Napoleon settings
