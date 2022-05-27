@@ -1,20 +1,20 @@
-name: Sphinx build
-
+name: Pages
 on:
   push:
     branches:
-      - main
-
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
+      - uses: actions/checkout@master
         with:
-          python-version: 3.9
-      - run: bash docs/build_docs.sh
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v3.1.0
-      - name: GitHub Push
-        uses: ad-m/github-push-action@v0.6.0
+          fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+      - name: Build and Commit
+        uses: sphinx-notes/pages@v2
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
