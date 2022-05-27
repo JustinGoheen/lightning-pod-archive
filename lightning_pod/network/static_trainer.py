@@ -1,21 +1,3 @@
-"""
-This module serves to consolidate basic use cases of PyTorch Lightning and to test
-functionality of this template using an encoder-decoder on MNIST. Documentation and soruce
-code links are provided below.
-
-The trainer is "static" in the sense that the settings are hardcoded, which may be a more
-familiar way for beginners before creating a trainer that interfaces with argparse (employing a trainer from CLI) or 
-hydra (employing a trainer from a config.yml file).
-
-example code: https://pytorch-lightning.readthedocs.io/en/latest/model/train_model_basic.html
-Trainer: https://pytorch-lightning.readthedocs.io/en/latest/common/trainer.html
-Trainer source code: https://github.com/PyTorchLightning/pytorch-lightning/blob/eb21135b2aad20aaad45aae44858c090f1e780e5/pytorch_lightning/trainer/trainer.py#L126
-Reproducibility: https://pytorch-lightning.readthedocs.io/en/latest/common/trainer.html#reproducibility
-TensorBoardLogger: https://pytorch-lightning.readthedocs.io/en/latest/api/pytorch_lightning.loggers.tensorboard.html#tensorboard
-SimpleProfiler: https://pytorch-lightning.readthedocs.io/en/latest/api/pytorch_lightning.profiler.SimpleProfiler.html#simpleprofiler
-ModelCheckpoint: https://pytorch-lightning.readthedocs.io/en/latest/api/pytorch_lightning.callbacks.ModelCheckpoint.html#modelcheckpoint
-"""
-
 import os
 from pathlib import Path
 from pytorch_lightning import Trainer, seed_everything
@@ -33,12 +15,15 @@ if __name__ == "__main__":
     PODPATH = NETWORKPATH.parents[0]
     PROJECTPATH = NETWORKPATH.parents[1]
     # SET LOGGER
+    # https://pytorch-lightning.readthedocs.io/en/latest/api/pytorch_lightning.loggers.tensorboard.html#tensorboard
     logs_dir = os.path.join(PROJECTPATH, "logs")
     logger = TensorBoardLogger(logs_dir, name="lightning_logs")
     # SET PROFILER
+    # https://pytorch-lightning.readthedocs.io/en/latest/api/pytorch_lightning.profiler.SimpleProfiler.html#simpleprofiler
     profile_dir = os.path.join(logs_dir, "profiler")
     profiler = SimpleProfiler(dirpath=profile_dir, filename="profiler", extended=True)
     # SET CHECKPOINT CALLBACK
+    # https://pytorch-lightning.readthedocs.io/en/latest/api/pytorch_lightning.callbacks.ModelCheckpoint.html#modelcheckpoint
     chkpt_dir = os.path.join(PROJECTPATH, "models", "checkpoints")
     checkpoint_callback = ModelCheckpoint(dirpath=chkpt_dir, filename="model")
     # SET EARLYSTOPPING CALLBACK
@@ -46,12 +31,14 @@ if __name__ == "__main__":
     # SET CALLBACKS
     callbacks = [checkpoint_callback, early_stopping]
     # SET SEED
+    # https://pytorch-lightning.readthedocs.io/en/latest/common/trainer.html#reproducibility
     seed_everything(42, workers=True)
     #  GET DATALOADER
     datamodule = LitDataModule()
     #  SET MODEL
     model = LitModel()
     # SET TRAINER
+    # https://pytorch-lightning.readthedocs.io/en/latest/common/trainer.html
     trainer = Trainer(
         max_epochs=5,
         limit_train_batches=0.10,  # use only x% of training samples
