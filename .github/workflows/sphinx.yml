@@ -17,7 +17,6 @@ jobs:
       - name: Build HTML
         run: |
           sphinx-apidoc -f -o docs/source lightning_pod/
-          make clean
           cd docs
           make html
       - name: Upload artifacts
