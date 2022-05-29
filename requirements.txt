@@ -37,5 +37,7 @@ myst-parser
 sphinx_rtd_theme
 pydata-sphinx-theme
 pt-lightning-sphinx-theme @ https://github.com/PyTorchLightning/lightning_sphinx_theme/archive/master.zip
+# RESEARCH TOOLS
+mkposters
 # PIN PROTOBUF TO 3.20 TO AVOID 4.12 ERRORS IN CI/CD
 protobuf==3.20.1

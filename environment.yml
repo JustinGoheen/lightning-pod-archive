@@ -25,6 +25,7 @@ dependencies:
       - torchtext
       - torchvision
       - torch-tb-profiler
+      - mkposter
       - dash
       - dash-bootstrap-components
       - gunicorn
