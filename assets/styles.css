@@ -7,43 +7,6 @@
     box-shadow: 2px 2px 2px lightgrey;
 }
 
-#close_chart {
-    border-radius: 8px;
-    flex: 5;
-    position: relative;
-}
-
-
-#returns_chart {
-    border-radius: 8px;
-    flex: 5;
-    position: relative;
-}
-
-#classification_chart {
-    border-radius: 8px;
-    flex: 5;
-    position: relative;
-}
-
-#boundaries_chart {
-    border-radius: 8px;
-    flex: 5;
-    position: relative;
-}
-
-#prcurve_chart {
-    border-radius: 8px;
-    flex: 5;
-    position: relative;
-}
-
-#roccurve_chart {
-    border-radius: 8px;
-    flex: 5;
-    position: relative;
-}
-
 .mini_container {
     border-radius: 5px;
     background-color: #f9f9f9;
