@@ -43,7 +43,7 @@ if __name__ == "__main__":
     # https://pytorch-lightning.readthedocs.io/en/latest/common/trainer.html
     trainer = Trainer(
         max_epochs=100,
-        min_epochs=None,
+        min_epochs=20,
         limit_train_batches=1.0,  # use only x% of training samples; 1.0  is 100% of batch
         accelerator="auto",
         devices="auto",
@@ -118,6 +118,6 @@ if __name__ == "__main__":
     train_split_fname = os.path.join(split_dir, "train.pt")
     test_split_fname = os.path.join(split_dir, "test.pt")
     val_split_fname = os.path.join(split_dir, "val.pt")
-    torch.save(datamodule.train_data.dataset, train_split_fname)
-    torch.save(datamodule.test_data.dataset, test_split_fname)
-    torch.save(datamodule.val_data.dataset, val_split_fname)
+    torch.save(datamodule.train_data, train_split_fname)
+    torch.save(datamodule.test_data, test_split_fname)
+    torch.save(datamodule.val_data, val_split_fname)

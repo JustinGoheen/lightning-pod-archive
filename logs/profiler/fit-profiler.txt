@@ -1,0 +1,27 @@
+FIT Profiler Report
+Profile stats for: records
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                          ProfilerStep*        10.99%     774.000us        99.94%       7.037ms       3.518ms             2  
+enumerate(DataLoader)#_MultiProcessingDataLoaderIter...        66.10%       4.654ms        66.87%       4.708ms       2.354ms             2  
+[pl][profile][Strategy]SingleDeviceStrategy.validati...         3.25%     229.000us         9.80%     690.000us     345.000us             2  
+[pl][profile][Callback]TQDMProgressBar.on_validation...         7.61%     536.000us         7.61%     536.000us     268.000us             2  
+[pl][module]lightning_pod.network.module.Encoder: en...         0.31%      22.000us         2.98%     210.000us     105.000us             2  
+[pl][module]torch.nn.modules.container.Sequential: e...         0.67%      47.000us         2.57%     181.000us      90.500us             2  
+[pl][module]lightning_pod.network.module.Decoder: de...         0.26%      18.000us         1.92%     135.000us      67.500us             2  
+[pl][module]torch.nn.modules.container.Sequential: d...         0.55%      39.000us         1.66%     117.000us      58.500us             2  
+                                            aten::empty         1.53%     108.000us         1.53%     108.000us       0.794us           136  
+[pl][profile][Strategy]SingleDeviceStrategy.batch_to...         1.51%     106.000us         1.52%     107.000us      53.500us             2  
+                                           aten::linear         0.13%       9.000us         1.39%      98.000us      12.250us             8  
+                                            aten::zeros         0.58%      41.000us         1.16%      82.000us       1.464us            56  
+                                            aten::addmm         0.78%      55.000us         1.01%      71.000us       8.875us             8  
+[pl][module]torch.nn.modules.linear.Linear: encoder....         0.20%      14.000us         0.99%      70.000us      35.000us             2  
+                                             aten::mean         0.28%      20.000us         0.88%      62.000us      15.500us             4  
+[pl][profile][Callback]TQDMProgressBar.on_validation...         0.82%      58.000us         0.85%      60.000us      30.000us             2  
+                                         aten::mse_loss         0.13%       9.000us         0.72%      51.000us      25.500us             2  
+[pl][module]torch.nn.modules.activation.ReLU: encode...         0.18%      13.000us         0.41%      29.000us      14.500us             2  
+[pl][module]torch.nn.modules.linear.Linear: decoder....         0.14%      10.000us         0.40%      28.000us      14.000us             2  
+                                             aten::div_         0.16%      11.000us         0.40%      28.000us       7.000us             4  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 7.041ms
