@@ -1,9 +1,11 @@
 import os
+import torch
 import hydra
 from pathlib import Path
+from torch.utils.data import TensorDataset
 from pytorch_lightning import Trainer, seed_everything
 from pytorch_lightning.loggers import TensorBoardLogger
-from pytorch_lightning.profiler import SimpleProfiler
+from pytorch_lightning.profiler import PyTorchProfiler
 from pytorch_lightning.callbacks import ModelCheckpoint, EarlyStopping
 from lightning_pod.network.module import LitModel
 from lightning_pod.pipeline.datamodule import LitDataModule
@@ -20,7 +22,7 @@ def main(cfg):
     logger = TensorBoardLogger(logs_dir, name="lightning_logs")
     # SET PROFILER
     profile_dir = os.path.join(logs_dir, "profiler")
-    profiler = SimpleProfiler(dirpath=profile_dir, filename="profiler", extended=True)
+    profiler = PyTorchProfiler(dirpath=profile_dir, filename="profiler")
     # SET CHECKPOINT CALLBACK
     chkpt_dir = os.path.join(PROJECTPATH, "models", "checkpoints")
     checkpoint_callback = ModelCheckpoint(dirpath=chkpt_dir, filename="model")
@@ -99,6 +101,22 @@ def main(cfg):
     modelpath = os.path.join(pretrained_dir, "model.onnx")
     input_sample = datamodule.train_data.dataset[0][0]
     model.to_onnx(modelpath, input_sample=input_sample, export_params=True)
+    # PREDICT
+    predictions = trainer.predict(model, datamodule.val_dataloader())
+    # EXPORT PREDICTIONS
+    predictions = torch.vstack(predictions)
+    predictions = TensorDataset(predictions)
+    predictions_dir = os.path.join(PROJECTPATH, "data", "predictions")
+    prediction_fname = os.path.join(predictions_dir, "predictions.pt")
+    torch.save(predictions, prediction_fname)
+    # EXPORT ALL DATA SPLITS FOR REPRODUCIBILITY
+    split_dir = os.path.join(PROJECTPATH, "data", "training_split")
+    train_split_fname = os.path.join(split_dir, "train.pt")
+    test_split_fname = os.path.join(split_dir, "test.pt")
+    val_split_fname = os.path.join(split_dir, "val.pt")
+    torch.save(datamodule.train_data.dataset, train_split_fname)
+    torch.save(datamodule.test_data.dataset, test_split_fname)
+    torch.save(datamodule.val_data.dataset, val_split_fname)
 
 
 if __name__ == "__main__":
