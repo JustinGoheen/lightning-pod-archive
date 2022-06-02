@@ -1,6 +1,7 @@
 # market classification app
 import os
 import dash
+import torch
 import dash_bootstrap_components as dbc
 import plotly.graph_objects as go  # leave for additional plotting components
 import plotly.express as px
@@ -40,22 +41,22 @@ def make_model():
 
 def leftside_figure(dataset):
     """creates the ground truth image"""
-    fig = px.imshow(dataset[0][0].view(28, 28))
+    fig = px.imshow(dataset.view(28, 28))
     fig.update_layout(title=dict(text="Ground Truth"))
     return fig
 
 
 def rightside_figure(dataset):
     """creates the decoded image"""
-    fig = px.imshow(dataset[0][0].view(28, 28))
+    fig = px.imshow(dataset.view(28, 28))
     fig.update_layout(title=dict(text="Decoded"))
     return fig
 
 
-#### CREATE DATA ####
-
-dataset = LitDataModule().dataset
-dataset = dataset(DATAPATH, download=True, transform=transforms.ToTensor())
+#### DATA ####
+predictions = torch.load("data/predictions/predictions.pt")
+ground_truths = torch.load("data/training_split/val.pt")
+sample_idx = 10
 
 
 #### APP LAYOUT ####
@@ -108,7 +109,7 @@ SIDEBAR = dbc.Col(
 
 GROUNDTRUTH = dcc.Graph(
     id="leftside_figure",
-    figure=leftside_figure(dataset),
+    figure=leftside_figure(ground_truths[sample_idx][0]),
     config={
         "responsive": True,  # dynamically resizes Graph with browser winder
         "displayModeBar": True,  # always show the Graph tools
@@ -118,7 +119,7 @@ GROUNDTRUTH = dcc.Graph(
 
 PREDICTIONS = dcc.Graph(
     id="rightside_figure",
-    figure=rightside_figure(dataset),
+    figure=rightside_figure(predictions[sample_idx][0]),
     config={
         "responsive": True,  # dynamically resizes Graph with browser winder
         "displayModeBar": True,  # always show the Graph tools
@@ -200,9 +201,9 @@ BODY = dbc.Container([dbc.Row([SIDEBAR, MAIN_AREA])], fluid=True)
 
 app.layout = html.Div(
     [
-        NAVBAR,  # dbc.N
+        NAVBAR,
         html.Br(),  # hacky way to create space between header (navbar) and body
-        BODY,  # dbc.Container
+        BODY,
     ]
 )
 
