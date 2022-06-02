@@ -135,8 +135,5 @@ dmypy.json
 *.code-workspace
 .vscode/*
 
-# data
-data/cache/*
-
-# profiler, logger logs, model checkpoints, production models
+# hydra output
 outputs/
