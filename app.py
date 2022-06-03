@@ -21,10 +21,7 @@ app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 server = app.server
 
 
-#### HELPER FUNCTIONS ####
-
-
-def scores_report(y_true, y_predict):
+def scores_collection(y_true, y_predict):
     scores = {
         "Precision": Precision(y_true, y_predict),
         "Recall": Recall(y_true, y_predict),
@@ -34,40 +31,35 @@ def scores_report(y_true, y_predict):
     return scores
 
 
-def make_model():
-    model = LitModel()
-    return
-
-
-def leftside_figure(dataset):
+def leftside_figure(ground_truth_image):
     """creates the ground truth image"""
-    fig = px.imshow(dataset.view(28, 28))
+    fig = px.imshow(ground_truth_image.view(28, 28))
     fig.update_layout(title=dict(text="Ground Truth"))
     return fig
 
 
-def rightside_figure(dataset):
+def rightside_figure(prediction_image):
     """creates the decoded image"""
-    fig = px.imshow(dataset.view(28, 28))
+    fig = px.imshow(prediction_image.view(28, 28))
     fig.update_layout(title=dict(text="Decoded"))
     return fig
 
 
 #### DATA ####
-predictions = torch.load("data/predictions/predictions.pt")
-ground_truths = torch.load("data/training_split/val.pt")
+predictions_fname = os.path.join("data", "predictions", "predictions.pt")
+predictions = torch.load(predictions_fname)
+ground_truths_fname = os.path.join("data", "training_split", "val.pt")
+ground_truths = torch.load(ground_truths_fname)
 sample_idx = 10
 
 
 #### APP LAYOUT ####
-
 NAVBAR = dbc.NavbarSimple(
-    brand="PyTorch Lightning MNIST Encoder-Decoder",
+    brand="MNIST Encoder-Decoder",
     color="#792ee5",
     dark=True,
     fluid=True,
 )
-
 
 MODEL_CARD = dbc.Card(
     dbc.CardBody(
@@ -133,10 +125,10 @@ SCORES = dbc.Row(
             [
                 dbc.Card(
                     [
-                        html.P("Precision", style={"font-weight": "bold"}),
+                        html.P("Metric 1", style={"font-weight": "bold"}),
                         html.H6(0.01, id="precision-score", style={"font-size": "80%"}),
                     ],
-                    id="R2",
+                    id="metric_1",
                     className="mini_container",
                 )
             ]
@@ -145,10 +137,10 @@ SCORES = dbc.Row(
             [
                 dbc.Card(
                     [
-                        html.P("Recall", style={"font-weight": "bold"}),
+                        html.P("Metric 2", style={"font-weight": "bold"}),
                         html.H6(0.01, id="recall-score", style={"font-size": "80%"}),
                     ],
-                    id="RMSE",
+                    id="metric_2",
                     className="mini_container",
                 )
             ]
@@ -157,10 +149,10 @@ SCORES = dbc.Row(
             [
                 dbc.Card(
                     [
-                        html.P("F1", style={"font-weight": "bold"}),
+                        html.P("Metric 3", style={"font-weight": "bold"}),
                         html.H6(0.01, id="f1-score", style={"font-size": "80%"}),
                     ],
-                    id="MPD",
+                    id="metric_3",
                     className="mini_container",
                 )
             ]
@@ -169,10 +161,10 @@ SCORES = dbc.Row(
             [
                 dbc.Card(
                     [
-                        html.P("Accuracy", style={"font-weight": "bold"}),
+                        html.P("Metric 4", style={"font-weight": "bold"}),
                         html.H6(0.01, id="accuracy-score", style={"font-size": "80%"}),
                     ],
-                    id="MGD",
+                    id="metric_4",
                     className="mini_container",
                 )
             ]
@@ -180,7 +172,6 @@ SCORES = dbc.Row(
     ],
     id="scores_card",
 )
-
 
 MAIN_AREA = dbc.Col(
     [
