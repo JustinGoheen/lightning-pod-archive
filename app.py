@@ -3,15 +3,10 @@ import os
 import dash
 import torch
 import dash_bootstrap_components as dbc
-import plotly.graph_objects as go  # leave for additional plotting components
 import plotly.express as px
 from dash import html
 from dash import dcc
-from dash.dependencies import Input, Output  # leave for callbacks
 from torchmetrics import Precision, Recall, F1Score, Accuracy
-from torchvision import transforms
-from lightning_pod.network.module import LitModel
-from lightning_pod.pipeline.datamodule import LitDataModule
 
 
 DATAPATH = os.path.join("data", "cache")
@@ -21,14 +16,14 @@ app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 server = app.server
 
 
-def scores_collection(y_true, y_predict):
-    scores = {
+def metrics_collection(y_true, y_predict):
+    metrics = {
         "Precision": Precision(y_true, y_predict),
         "Recall": Recall(y_true, y_predict),
         "F1": F1Score(y_true, y_predict),
         "Accuracy": Accuracy(y_true, y_predict),
     }
-    return scores
+    return metrics
 
 
 def leftside_figure(ground_truth_image):
