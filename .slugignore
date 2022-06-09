@@ -1,9 +1,0 @@
-.circleci
-.devcontainer
-.github
-.deepsource.toml
-.gitpod.yml
-docs/*
-notebooks/*
-test/*
-logs/*
