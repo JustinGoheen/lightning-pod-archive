@@ -2,7 +2,7 @@ name: lightning-pod
 channels:
   - defaults
 dependencies:
-  - python=3.9.12
+  - python
   - pip
   - sentencepiece
   - tokenizers
@@ -26,7 +26,7 @@ dependencies:
       - torchtext
       - torchvision
       - torch-tb-profiler
-      - mkposter
+      - mkposters
       - dash
       - dash-bootstrap-components
       - gunicorn
