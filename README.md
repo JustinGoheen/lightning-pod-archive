@@ -10,7 +10,7 @@ A template environment and system architecture for [PyTorch Lightning](https://w
 [![codecov](https://codecov.io/gh/JustinGoheen/lightning-pod/branch/main/graph/badge.svg)](https://codecov.io/gh/JustinGoheen/lightning-pod)
 ![CircleCI](https://circleci.com/gh/JustinGoheen/lightning-pod.svg?style=shield)
 
-Refer to the [wiki](https://github.com/JustinGoheen/lightning-pod/wiki) for additional information and guides.
+Refer to the [wiki](https://justingoheen.github.io/lightning-engineer/) for additional information and guides.
 
 [![Open in Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new?repo=JustinGoheen/lightning-pod)
 
